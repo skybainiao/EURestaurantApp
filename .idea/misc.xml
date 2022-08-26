@@ -3,17 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/drawable/bg_searchview.xml" value="0.3635" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.3155" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3155" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/drawable/shape.xml" value="0.3155" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.3625" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.3625" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_notifications.xml" value="0.3625" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3635" />
-        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3635" />
+        <entry key="app/src/main/res/drawable/imageshape.xml" value="0.2155" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2649429321289063" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.25625" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28496704101562514" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.25625" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.198" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2155" />
       </map>
     </option>
   </component>
@@ -22,5 +18,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.25625" />
+      </ProjectState>
+    </option>
   </component>
 </project>
