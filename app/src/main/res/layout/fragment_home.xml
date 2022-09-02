@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:src="@mipmap/logo1"
 
-            />
+            android:contentDescription="TODO" />
 
         <SearchView
             android:id="@+id/search_view"
@@ -51,6 +51,7 @@
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="835dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,6 +63,7 @@
 
 
         <LinearLayout
+            android:id="@+id/linearLayoutMax"
             android:layout_width="411dp"
             android:layout_height="841dp"
             android:orientation="vertical"
@@ -163,11 +165,6 @@
                             android:text="景点"
                             android:textAlignment="center" />
                     </LinearLayout>
-
-
-
-
-
 
 
                 </LinearLayout>
@@ -377,6 +374,25 @@
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="304dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:text="推荐"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
