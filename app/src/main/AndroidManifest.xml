@@ -8,8 +8,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
-    android:theme="@style/Theme.EURestaurant">
+        android:theme="@style/Theme.EURestaurant">
+        <activity
+            android:name=".ui.CityPage.CityActivity"
+            android:exported="false"
+            android:label="@string/title_activity_city"
+            android:theme="@style/Theme.EURestaurant.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

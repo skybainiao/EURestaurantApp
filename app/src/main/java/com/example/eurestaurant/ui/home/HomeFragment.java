@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,9 +17,10 @@ import com.example.eurestaurant.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
-    private LinearLayout linearLayout;
-    private ImageView imageView;
+    FragmentHomeBinding binding;
+    LinearLayout linearLayout;
+    ImageView imageView;
+    TextView more;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -32,14 +32,23 @@ public class HomeFragment extends Fragment {
 
         linearLayout=root.findViewById(R.id.linearLayoutMax);
         imageView=root.findViewById(R.id.imageView1);
+        more=root.findViewById(R.id.more20);
 
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
         return root;
     }
 
 
+    public void getMoreCities(){
 
+    }
 
 
 

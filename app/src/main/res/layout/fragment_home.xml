@@ -411,13 +411,14 @@
                         <ImageView
                             android:id="@+id/imageView15"
                             android:layout_width="match_parent"
-                            android:layout_height="144dp"
+                            android:layout_height="150dp"
                             android:src="@mipmap/copenhagen" />
 
                         <TextView
                             android:id="@+id/textView14"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:text="美丽的丹麦美人鱼" />
 
                         <LinearLayout
@@ -428,7 +429,7 @@
                             <ImageView
                                 android:id="@+id/imageView17"
                                 android:layout_width="0dp"
-                                android:layout_height="30dp"
+                                android:layout_height="20dp"
                                 android:layout_weight="1"
                                 android:src="@mipmap/ic_launcher" />
 
@@ -445,7 +446,7 @@
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@android:drawable/btn_star_big_off" />
+                                android:src="@mipmap/like" />
 
                             <TextView
                                 android:id="@+id/textView17"
@@ -466,13 +467,14 @@
                         <ImageView
                             android:id="@+id/imageView21"
                             android:layout_width="match_parent"
-                            android:layout_height="144dp"
+                            android:layout_height="150dp"
                             android:src="@mipmap/copenhagen" />
 
                         <TextView
                             android:id="@+id/textView21"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:text="美丽的丹麦美人鱼,坐落于哥本哈根" />
 
                         <LinearLayout
@@ -483,7 +485,7 @@
                             <ImageView
                                 android:id="@+id/imageView22"
                                 android:layout_width="0dp"
-                                android:layout_height="30dp"
+                                android:layout_height="20dp"
                                 android:layout_weight="1"
                                 android:src="@mipmap/ic_launcher" />
 
@@ -500,7 +502,7 @@
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@android:drawable/btn_star_big_off" />
+                                android:src="@mipmap/like" />
 
                             <TextView
                                 android:id="@+id/textView24"
@@ -521,13 +523,14 @@
                         <ImageView
                             android:id="@+id/imageView28"
                             android:layout_width="match_parent"
-                            android:layout_height="163dp"
+                            android:layout_height="150dp"
                             android:src="@mipmap/arrhus" />
 
                         <TextView
                             android:id="@+id/textView34"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:text="美丽的奥胡斯" />
 
                         <LinearLayout
@@ -538,7 +541,7 @@
                             <ImageView
                                 android:id="@+id/imageView29"
                                 android:layout_width="0dp"
-                                android:layout_height="30dp"
+                                android:layout_height="20dp"
                                 android:layout_weight="1"
                                 android:src="@mipmap/ic_launcher" />
 
@@ -555,7 +558,7 @@
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@android:drawable/btn_star_big_off" />
+                                android:src="@mipmap/like" />
 
                             <TextView
                                 android:id="@+id/textView37"
@@ -582,13 +585,14 @@
                         <ImageView
                             android:id="@+id/imageView16"
                             android:layout_width="match_parent"
-                            android:layout_height="163dp"
+                            android:layout_height="150dp"
                             android:src="@mipmap/arrhus" />
 
                         <TextView
                             android:id="@+id/textView15"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:text="美丽的奥胡斯" />
 
                         <LinearLayout
@@ -599,7 +603,7 @@
                             <ImageView
                                 android:id="@+id/imageView20"
                                 android:layout_width="0dp"
-                                android:layout_height="30dp"
+                                android:layout_height="20dp"
                                 android:layout_weight="1"
                                 android:src="@mipmap/ic_launcher" />
 
@@ -616,7 +620,7 @@
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@android:drawable/btn_star_big_off" />
+                                android:src="@mipmap/like" />
 
                             <TextView
                                 android:id="@+id/textView18"
@@ -636,13 +640,14 @@
                         <ImageView
                             android:id="@+id/imageView25"
                             android:layout_width="match_parent"
-                            android:layout_height="163dp"
+                            android:layout_height="150dp"
                             android:src="@mipmap/arrhus" />
 
                         <TextView
                             android:id="@+id/textView31"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:text="美丽的奥胡斯" />
 
                         <LinearLayout
@@ -653,7 +658,7 @@
                             <ImageView
                                 android:id="@+id/imageView26"
                                 android:layout_width="0dp"
-                                android:layout_height="30dp"
+                                android:layout_height="20dp"
                                 android:layout_weight="1"
                                 android:src="@mipmap/ic_launcher" />
 
@@ -670,7 +675,7 @@
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@android:drawable/btn_star_big_off" />
+                                android:src="@mipmap/like" />
 
                             <TextView
                                 android:id="@+id/textView33"
@@ -690,13 +695,14 @@
                         <ImageView
                             android:id="@+id/imageView40"
                             android:layout_width="match_parent"
-                            android:layout_height="144dp"
+                            android:layout_height="150dp"
                             android:src="@mipmap/copenhagen" />
 
                         <TextView
                             android:id="@+id/textView39"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:text="美丽的丹麦美人鱼,坐落于哥本哈根" />
 
                         <LinearLayout
@@ -707,7 +713,7 @@
                             <ImageView
                                 android:id="@+id/imageView41"
                                 android:layout_width="0dp"
-                                android:layout_height="30dp"
+                                android:layout_height="20dp"
                                 android:layout_weight="1"
                                 android:src="@mipmap/ic_launcher" />
 
@@ -724,7 +730,7 @@
                                 android:layout_width="1dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:src="@android:drawable/btn_star_big_off" />
+                                android:src="@mipmap/like" />
 
                             <TextView
                                 android:id="@+id/textView42"

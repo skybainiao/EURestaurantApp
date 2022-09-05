@@ -3,7 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/activity_city.xml" value="0.20051303976058144" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/blank_fragment.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/content_city.xml" value="0.20051303976058144" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_first.xml" value="0.20051303976058144" />
         <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_home.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_item.xml" value="0.2975630611372381" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_item_list.xml" value="0.2860196665241556" />
+        <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/layout/fragment_second.xml" value="0.20051303976058144" />
         <entry key="app/src/main/res/drawable/imageshape.xml" value="0.2155" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2649429321289063" />
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.25625" />
