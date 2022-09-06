@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentHomeBinding;
+import com.example.eurestaurant.ui.CityActivity;
 
 public class HomeFragment extends Fragment {
 
