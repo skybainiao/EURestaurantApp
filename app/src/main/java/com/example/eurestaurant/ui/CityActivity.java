@@ -62,6 +62,22 @@ public class CityActivity extends AppCompatActivity {
         button10=findViewById(R.id.button15);
 
 
+        BeiOu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonVisibleOn();
+                button1.setText(beiou.get(0).getName());
+                button2.setText(beiou.get(1).getName());
+                button3.setText(beiou.get(2).getName());
+                button6.setText(beiou.get(3).getName());
+                button7.setText(beiou.get(4).getName());
+                button4.setVisibility(View.GONE);
+                button5.setVisibility(View.GONE);
+                button8.setVisibility(View.GONE);
+                button9.setVisibility(View.GONE);
+                button10.setVisibility(View.GONE);
+            }
+        });
 
         XiOu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,21 +96,56 @@ public class CityActivity extends AppCompatActivity {
             }
         });
 
+        ZhongOu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonVisibleOn();
+                button1.setText(zhongou.get(0).getName());
+                button2.setText(zhongou.get(1).getName());
+                button3.setText(zhongou.get(2).getName());
+                button4.setText(zhongou.get(3).getName());
+                button6.setText(zhongou.get(4).getName());
+                button7.setText(zhongou.get(5).getName());
+                button8.setText(zhongou.get(6).getName());
+                button5.setVisibility(View.GONE);
+                button9.setVisibility(View.GONE);
+                button10.setVisibility(View.GONE);
+            }
+        });
 
+        NanOu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonVisibleOn();
+                button1.setText(nanou.get(0).getName());
+                button2.setText(nanou.get(1).getName());
+                button3.setText(nanou.get(2).getName());
+                button4.setText(nanou.get(3).getName());
+                button5.setText(nanou.get(4).getName());
+                button6.setText(nanou.get(5).getName());
+                button7.setText(nanou.get(6).getName());
+                button8.setText(nanou.get(7).getName());
+                button9.setText(nanou.get(8).getName());
+                button10.setText(nanou.get(9).getName());
+            }
+        });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        DongOu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonVisibleOn();
+                button1.setText(dongou.get(0).getName());
+                button2.setText(dongou.get(1).getName());
+                button3.setText(dongou.get(2).getName());
+                button6.setText(dongou.get(3).getName());
+                button7.setText(dongou.get(4).getName());
+                button4.setVisibility(View.GONE);
+                button5.setVisibility(View.GONE);
+                button8.setVisibility(View.GONE);
+                button9.setVisibility(View.GONE);
+                button10.setVisibility(View.GONE);
+            }
+        });
 
     }
 
