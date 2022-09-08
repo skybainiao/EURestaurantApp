@@ -1,6 +1,8 @@
 package com.example.eurestaurant.Model;
 
-public class Continent {
+import java.io.Serializable;
+
+public class Continent implements Serializable {
     private String name;
 
     public Continent(String name){

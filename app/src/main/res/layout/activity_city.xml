@@ -160,6 +160,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_button"
+                    android:visibility="gone"
                     android:text="Button" />
 
                 <Button
@@ -168,6 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:visibility="gone"
                     android:background="@drawable/shape_button"
                     android:text="Button" />
             </LinearLayout>
@@ -204,6 +206,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_button"
+                    android:visibility="gone"
                     android:text="Button" />
 
                 <Button
@@ -213,6 +216,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_button"
+                    android:visibility="gone"
                     android:text="Button" />
 
                 <Button
@@ -221,6 +225,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
+                    android:visibility="gone"
                     android:background="@drawable/shape_button"
                     android:text="Button" />
             </LinearLayout>

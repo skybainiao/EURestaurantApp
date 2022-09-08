@@ -1,4 +1,6 @@
 package com.example.eurestaurant.Model;
 
-public class City {
+import java.io.Serializable;
+
+public class City implements Serializable {
 }
