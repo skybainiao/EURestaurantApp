@@ -2,10 +2,14 @@ package com.example.eurestaurant.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.eurestaurant.MainActivity;
 import com.example.eurestaurant.Model.Country;
 import com.example.eurestaurant.R;
 
@@ -13,12 +17,12 @@ import java.util.ArrayList;
 
 public class CityActivity extends AppCompatActivity {
 
+    private ImageView back;
     private Button BeiOu;
     private Button XiOu;
     private Button ZhongOu;
     private Button NanOu;
     private Button DongOu;
-
     private Button button1;
     private Button button2;
     private Button button3;
@@ -44,12 +48,13 @@ public class CityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_city);
         setCountry();
 
+
         BeiOu=findViewById(R.id.button8);
         XiOu=findViewById(R.id.button9);
         ZhongOu=findViewById(R.id.button10);
         NanOu=findViewById(R.id.button11);
         DongOu=findViewById(R.id.button12);
-
+        back=findViewById(R.id.imageViewBack);
         button1=findViewById(R.id.button);
         button2=findViewById(R.id.button2);
         button3=findViewById(R.id.button3);
@@ -61,6 +66,14 @@ public class CityActivity extends AppCompatActivity {
         button9=findViewById(R.id.button13);
         button10=findViewById(R.id.button15);
 
+
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         BeiOu.setOnClickListener(new View.OnClickListener() {
             @Override
