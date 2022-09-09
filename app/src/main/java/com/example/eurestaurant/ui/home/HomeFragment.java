@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentHomeBinding;
-import com.example.eurestaurant.ui.CityActivity;
+import com.example.eurestaurant.ui.CountryActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CityActivity.class);
+                Intent intent = new Intent(getActivity(), CountryActivity.class);
                 startActivity(intent);
             }
         });

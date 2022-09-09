@@ -31,5 +31,11 @@ public class Country implements Serializable {
         return name;
     }
 
-
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", continent='" + continent + '\'' +
+                '}';
+    }
 }

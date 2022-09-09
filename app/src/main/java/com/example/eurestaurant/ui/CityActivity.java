@@ -6,23 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.eurestaurant.MainActivity;
-import com.example.eurestaurant.Model.Country;
+import com.example.eurestaurant.Model.City;
 import com.example.eurestaurant.R;
 
 import java.util.ArrayList;
 
 public class CityActivity extends AppCompatActivity {
 
-    private ImageView back;
-    private Button BeiOu;
-    private Button XiOu;
-    private Button ZhongOu;
-    private Button NanOu;
-    private Button DongOu;
     private Button button1;
     private Button button2;
     private Button button3;
@@ -31,211 +23,201 @@ public class CityActivity extends AppCompatActivity {
     private Button button6;
     private Button button7;
     private Button button8;
-    private Button button9;
-    private Button button10;
+    private String countryName;
+    private TextView textView;
 
-    private ArrayList<Country> countries = new ArrayList<>();
-    private ArrayList<Country> beiou = new ArrayList();
-    private ArrayList<Country> xiou = new ArrayList();
-    private ArrayList<Country> zhongou = new ArrayList();
-    private ArrayList<Country> nanou = new ArrayList();
-    private ArrayList<Country> dongou = new ArrayList();
+    private ArrayList<Button> buttons = new ArrayList<>();
+    private ArrayList<City> cities = new ArrayList<>();
+    private ArrayList<String> citiesKind = new ArrayList<>();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city);
-        setCountry();
+        Intent getIntent = getIntent();
+        countryName = getIntent.getStringExtra("countryName");
+        setCities();
+        System.out.println(countryName);
+        for (int i = 0; i < citiesKind.size(); i++) {
+            System.out.println(citiesKind.get(i));
+        }
+
+        textView=findViewById(R.id.textView13);
+        textView.setText(countryName+"热门城市");
+        button1=findViewById(R.id.button16);
+        button2=findViewById(R.id.button18);
+        button3=findViewById(R.id.button20);
+        button4=findViewById(R.id.button22);
+        button5=findViewById(R.id.button17);
+        button6=findViewById(R.id.button19);
+        button7=findViewById(R.id.button21);
+        button8=findViewById(R.id.button23);
+
+        buttons.add(button1);
+        buttons.add(button2);
+        buttons.add(button3);
+        buttons.add(button4);
+        buttons.add(button5);
+        buttons.add(button6);
+        buttons.add(button7);
+        buttons.add(button8);
 
 
-        BeiOu=findViewById(R.id.button8);
-        XiOu=findViewById(R.id.button9);
-        ZhongOu=findViewById(R.id.button10);
-        NanOu=findViewById(R.id.button11);
-        DongOu=findViewById(R.id.button12);
-        back=findViewById(R.id.imageViewBack);
-        button1=findViewById(R.id.button);
-        button2=findViewById(R.id.button2);
-        button3=findViewById(R.id.button3);
-        button4=findViewById(R.id.button7);
-        button5=findViewById(R.id.button14);
-        button6=findViewById(R.id.button4);
-        button7=findViewById(R.id.button5);
-        button8=findViewById(R.id.button6);
-        button9=findViewById(R.id.button13);
-        button10=findViewById(R.id.button15);
+        int size = citiesKind.size();
+        getButtons(size);
 
 
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
-        BeiOu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonVisibleOn();
-                button1.setText(beiou.get(0).getName());
-                button2.setText(beiou.get(1).getName());
-                button3.setText(beiou.get(2).getName());
-                button6.setText(beiou.get(3).getName());
-                button7.setText(beiou.get(4).getName());
-                button4.setVisibility(View.GONE);
-                button5.setVisibility(View.GONE);
-                button8.setVisibility(View.GONE);
-                button9.setVisibility(View.GONE);
-                button10.setVisibility(View.GONE);
-            }
-        });
 
-        XiOu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonVisibleOn();
-                button1.setText(xiou.get(0).getName());
-                button2.setText(xiou.get(1).getName());
-                button3.setText(xiou.get(2).getName());
-                button4.setText(xiou.get(3).getName());
-                button6.setText(xiou.get(4).getName());
-                button7.setText(xiou.get(5).getName());
-                button8.setText(xiou.get(6).getName());
-                button5.setVisibility(View.GONE);
-                button9.setVisibility(View.GONE);
-                button10.setVisibility(View.GONE);
-            }
-        });
-
-        ZhongOu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonVisibleOn();
-                button1.setText(zhongou.get(0).getName());
-                button2.setText(zhongou.get(1).getName());
-                button3.setText(zhongou.get(2).getName());
-                button4.setText(zhongou.get(3).getName());
-                button6.setText(zhongou.get(4).getName());
-                button7.setText(zhongou.get(5).getName());
-                button8.setText(zhongou.get(6).getName());
-                button5.setVisibility(View.GONE);
-                button9.setVisibility(View.GONE);
-                button10.setVisibility(View.GONE);
-            }
-        });
-
-        NanOu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonVisibleOn();
-                button1.setText(nanou.get(0).getName());
-                button2.setText(nanou.get(1).getName());
-                button3.setText(nanou.get(2).getName());
-                button4.setText(nanou.get(3).getName());
-                button5.setText(nanou.get(4).getName());
-                button6.setText(nanou.get(5).getName());
-                button7.setText(nanou.get(6).getName());
-                button8.setText(nanou.get(7).getName());
-                button9.setText(nanou.get(8).getName());
-                button10.setText(nanou.get(9).getName());
-            }
-        });
-
-        DongOu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonVisibleOn();
-                button1.setText(dongou.get(0).getName());
-                button2.setText(dongou.get(1).getName());
-                button3.setText(dongou.get(2).getName());
-                button6.setText(dongou.get(3).getName());
-                button7.setText(dongou.get(4).getName());
-                button4.setVisibility(View.GONE);
-                button5.setVisibility(View.GONE);
-                button8.setVisibility(View.GONE);
-                button9.setVisibility(View.GONE);
-                button10.setVisibility(View.GONE);
-            }
-        });
 
     }
 
 
-    public void buttonVisibleOn(){
-        button1.setVisibility(View.VISIBLE);
-        button2.setVisibility(View.VISIBLE);
-        button3.setVisibility(View.VISIBLE);
-        button4.setVisibility(View.VISIBLE);
-        button5.setVisibility(View.VISIBLE);
-        button6.setVisibility(View.VISIBLE);
-        button7.setVisibility(View.VISIBLE);
-        button8.setVisibility(View.VISIBLE);
-        button9.setVisibility(View.VISIBLE);
-        button10.setVisibility(View.VISIBLE);
-    }
+    public void getButtons(int number){
+        if (number==0){
+            //
+        }
+        else if (number==1){
+            button1.setText(citiesKind.get(0));
+        }
+        else if (number==2){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+        }
+        else if (number==3){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+            button2.setText(citiesKind.get(2));
+        }
+        else if (number==4){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+            button2.setText(citiesKind.get(2));
+            button6.setText(citiesKind.get(3));
+        }
+        else if (number==5){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+            button2.setText(citiesKind.get(2));
+            button6.setText(citiesKind.get(3));
+            button3.setText(citiesKind.get(4));
+        }
+        else if (number==6){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+            button2.setText(citiesKind.get(2));
+            button6.setText(citiesKind.get(3));
+            button3.setText(citiesKind.get(4));
+            button7.setText(citiesKind.get(5));
+        }
+        else if (number==7){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+            button2.setText(citiesKind.get(2));
+            button6.setText(citiesKind.get(3));
+            button3.setText(citiesKind.get(4));
+            button7.setText(citiesKind.get(5));
+            button4.setText(citiesKind.get(6));
+        }
+        else if (number==8){
+            button1.setText(citiesKind.get(0));
+            button5.setText(citiesKind.get(1));
+            button2.setText(citiesKind.get(2));
+            button6.setText(citiesKind.get(3));
+            button3.setText(citiesKind.get(4));
+            button7.setText(citiesKind.get(5));
+            button4.setText(citiesKind.get(6));
+            button8.setText(citiesKind.get(7));
+        }
 
-
-    public void setCountry(){
-        countries.add(new Country("芬兰","北欧"));
-        countries.add(new Country("瑞典","北欧"));
-        countries.add(new Country("挪威","北欧"));
-        countries.add(new Country("冰岛","北欧"));
-        countries.add(new Country("丹麦","北欧"));
-
-        countries.add(new Country("爱沙尼亚","东欧"));
-        countries.add(new Country("拉脱维亚","东欧"));
-        countries.add(new Country("立陶宛","东欧"));
-        countries.add(new Country("白俄罗斯","东欧"));
-        countries.add(new Country("俄罗斯","东欧"));
-
-        countries.add(new Country("波兰","中欧"));
-        countries.add(new Country("捷克","中欧"));
-        countries.add(new Country("斯洛伐克","中欧"));
-        countries.add(new Country("匈牙利","中欧"));
-        countries.add(new Country("德国","中欧"));
-        countries.add(new Country("奥地利","中欧"));
-        countries.add(new Country("瑞士","中欧"));
-
-        countries.add(new Country("英国","西欧"));
-        countries.add(new Country("爱尔兰","西欧"));
-        countries.add(new Country("荷兰","西欧"));
-        countries.add(new Country("比利时","西欧"));
-        countries.add(new Country("卢森堡","西欧"));
-        countries.add(new Country("法国","西欧"));
-        countries.add(new Country("摩纳哥","西欧"));
-
-        countries.add(new Country("罗马尼亚","南欧"));
-        countries.add(new Country("保加利亚","南欧"));
-        countries.add(new Country("塞尔维亚","南欧"));
-        countries.add(new Country("阿尔巴尼亚","南欧"));
-        countries.add(new Country("希腊","南欧"));
-        countries.add(new Country("斯洛文尼亚","南欧"));
-        countries.add(new Country("克罗地亚","南欧"));
-        countries.add(new Country("意大利","南欧"));
-        countries.add(new Country("西班牙","南欧"));
-        countries.add(new Country("葡萄牙","南欧"));
-
-        for (int i = 0; i < countries.size(); i++) {
-            if (countries.get(i).getContinent().equals("西欧")){
-                xiou.add(countries.get(i));
-            }
-            else if (countries.get(i).getContinent().equals("北欧")){
-                beiou.add(countries.get(i));
-            }
-            else if (countries.get(i).getContinent().equals("中欧")){
-                zhongou.add(countries.get(i));
-            }
-            else if (countries.get(i).getContinent().equals("南欧")){
-                nanou.add(countries.get(i));
-            }
-            else if (countries.get(i).getContinent().equals("东欧")){
-                dongou.add(countries.get(i));
+        for (int i = 0; i < buttons.size(); i++) {
+            if (buttons.get(i).getText().equals("Button")){
+                buttons.get(i).setVisibility(View.GONE);
             }
         }
 
+
     }
+
+
+
+    public void setCities(){
+        cities.add(new City("伦敦","英国"));
+        cities.add(new City("爱丁堡","英国"));
+        cities.add(new City("伯明翰","英国"));
+        cities.add(new City("利物浦","英国"));
+        cities.add(new City("牛津","英国"));
+        cities.add(new City("剑桥","英国"));
+        cities.add(new City("曼彻斯特","英国"));
+
+        cities.add(new City("戛纳","法国"));
+        cities.add(new City("马赛","法国"));
+        cities.add(new City("里昂","法国"));
+        cities.add(new City("波尔多","法国"));
+        cities.add(new City("普罗旺斯","法国"));
+        cities.add(new City("尼斯","法国"));
+
+        cities.add(new City("巴塞罗那","西班牙"));
+        cities.add(new City("马德里","西班牙"));
+        cities.add(new City("格拉纳达","西班牙"));
+        cities.add(new City("塞尔维亚","西班牙"));
+        cities.add(new City("瓦伦西亚","西班牙"));
+
+        cities.add(new City("罗马","意大利"));
+        cities.add(new City("威尼斯","意大利"));
+        cities.add(new City("米兰","意大利"));
+        cities.add(new City("佛罗伦萨","意大利"));
+        cities.add(new City("那不勒斯","意大利"));
+
+        cities.add(new City("慕尼黑","德国"));
+        cities.add(new City("法兰克福","德国"));
+        cities.add(new City("斯图加特","德国"));
+        cities.add(new City("海德堡","德国"));
+        cities.add(new City("科隆","德国"));
+        cities.add(new City("杜塞尔多夫","德国"));
+        cities.add(new City("柏林","德国"));
+        cities.add(new City("不来梅","德国"));
+
+        cities.add(new City("阿姆斯特丹","荷兰"));
+        cities.add(new City("海牙","荷兰"));
+        cities.add(new City("鹿特丹","荷兰"));
+
+        cities.add(new City("哥本哈根","丹麦"));
+        cities.add(new City("奥胡斯","丹麦"));
+        cities.add(new City("欧登塞","丹麦"));
+
+        cities.add(new City("维也纳","奥地利"));
+        cities.add(new City("萨尔斯堡","奥地利"));
+        cities.add(new City("因斯布鲁克","奥地利"));
+
+        cities.add(new City("苏黎世","瑞士"));
+        cities.add(new City("日内瓦","瑞士"));
+        cities.add(new City("洛桑","瑞士"));
+        cities.add(new City("琉森","瑞士"));
+
+
+        for (int i = 0; i < cities.size(); i++) {
+            if (cities.get(i).getCountry().equals(countryName)){
+                citiesKind.add(cities.get(i).getName());
+            }
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
