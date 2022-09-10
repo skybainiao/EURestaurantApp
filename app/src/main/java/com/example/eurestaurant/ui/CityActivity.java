@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.eurestaurant.Model.City;
@@ -25,6 +26,7 @@ public class CityActivity extends AppCompatActivity {
     private Button button8;
     private String countryName;
     private TextView textView;
+    private ImageView back1;
 
     private ArrayList<Button> buttons = new ArrayList<>();
     private ArrayList<City> cities = new ArrayList<>();
@@ -43,6 +45,7 @@ public class CityActivity extends AppCompatActivity {
             System.out.println(citiesKind.get(i));
         }
 
+        back1=findViewById(R.id.imageViewBack1);
         textView=findViewById(R.id.textView13);
         textView.setText(countryName+"热门城市");
         button1=findViewById(R.id.button16);
@@ -63,12 +66,15 @@ public class CityActivity extends AppCompatActivity {
         buttons.add(button7);
         buttons.add(button8);
 
-
         int size = citiesKind.size();
         getButtons(size);
 
-
-
+        back1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
 

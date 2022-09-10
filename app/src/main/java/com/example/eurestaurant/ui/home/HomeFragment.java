@@ -19,10 +19,11 @@ import com.example.eurestaurant.ui.CountryActivity;
 
 public class HomeFragment extends Fragment {
 
-    FragmentHomeBinding binding;
-    LinearLayout linearLayout;
-    ImageView imageView;
-    TextView more;
+    private FragmentHomeBinding binding;
+    private LinearLayout linearLayout;
+    private ImageView imageView;
+    private TextView more;
+    private TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,6 +36,15 @@ public class HomeFragment extends Fragment {
         linearLayout=root.findViewById(R.id.linearLayoutMax);
         imageView=root.findViewById(R.id.imageView1);
         more=root.findViewById(R.id.more20);
+        textView=root.findViewById(R.id.textView7);
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CountryActivity.class);
+                startActivity(intent);
+            }
+        });
 
         more.setOnClickListener(new View.OnClickListener() {
             @Override
