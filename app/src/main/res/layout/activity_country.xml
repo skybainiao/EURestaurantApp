@@ -114,6 +114,8 @@
             android:textSize="20dp"
             android:text="国家" />
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -160,7 +162,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_button"
-                    android:visibility="gone"
+
                     android:text="Button" />
 
                 <Button
@@ -169,9 +171,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:visibility="gone"
                     android:background="@drawable/shape_button"
                     android:text="Button" />
+
+                <Button
+                    android:id="@+id/button25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/button27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/button29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Button" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -206,7 +235,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_button"
-                    android:visibility="gone"
                     android:text="Button" />
 
                 <Button
@@ -216,7 +244,6 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/shape_button"
-                    android:visibility="gone"
                     android:text="Button" />
 
                 <Button
@@ -225,9 +252,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:visibility="gone"
                     android:background="@drawable/shape_button"
                     android:text="Button" />
+
+                <Button
+                    android:id="@+id/button24"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/button26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/button28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Button" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

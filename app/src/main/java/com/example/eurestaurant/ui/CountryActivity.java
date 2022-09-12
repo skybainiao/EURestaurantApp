@@ -31,6 +31,13 @@ public class CountryActivity extends AppCompatActivity {
     private Button button8;
     private Button button9;
     private Button button10;
+    private Button button11;
+    private Button button12;
+    private Button button13;
+    private Button button14;
+    private Button button15;
+    private Button button16;
+
 
 
     private ArrayList<Country> countries = new ArrayList<>();
@@ -63,6 +70,14 @@ public class CountryActivity extends AppCompatActivity {
         button8=findViewById(R.id.button6);
         button9=findViewById(R.id.button13);
         button10=findViewById(R.id.button15);
+
+        button11=findViewById(R.id.button25);
+        button12=findViewById(R.id.button27);
+        button13=findViewById(R.id.button29);
+
+        button14=findViewById(R.id.button24);
+        button15=findViewById(R.id.button26);
+        button16=findViewById(R.id.button28);
 
 
 
@@ -138,6 +153,7 @@ public class CountryActivity extends AppCompatActivity {
                 button8.setText(nanou.get(7).getName());
                 button9.setText(nanou.get(8).getName());
                 button10.setText(nanou.get(9).getName());
+                button11.setText(nanou.get(10).getName());
             }
         });
 
@@ -150,11 +166,15 @@ public class CountryActivity extends AppCompatActivity {
                 button3.setText(dongou.get(2).getName());
                 button6.setText(dongou.get(3).getName());
                 button7.setText(dongou.get(4).getName());
-                button4.setVisibility(View.GONE);
-                button5.setVisibility(View.GONE);
-                button8.setVisibility(View.GONE);
-                button9.setVisibility(View.GONE);
-                button10.setVisibility(View.GONE);
+                button4.setText(dongou.get(5).getName());
+                button5.setText(dongou.get(6).getName());
+                button8.setText(dongou.get(7).getName());
+                button9.setText(dongou.get(8).getName());
+                button10.setText(dongou.get(9).getName());
+                button11.setText(dongou.get(10).getName());
+                button14.setText(dongou.get(11).getName());
+                button12.setText(dongou.get(12).getName());
+                button15.setText(dongou.get(13).getName());
             }
         });
 
@@ -272,7 +292,16 @@ public class CountryActivity extends AppCompatActivity {
         countries.add(new Country("拉脱维亚","东欧"));
         countries.add(new Country("立陶宛","东欧"));
         countries.add(new Country("白俄罗斯","东欧"));
+        countries.add(new Country("捷克","东欧"));
+        countries.add(new Country("匈牙利","东欧"));
+        countries.add(new Country("波兰","东欧"));
+        countries.add(new Country("克罗地亚","东欧"));
+        countries.add(new Country("斯洛文尼亚","东欧"));
+        countries.add(new Country("保加利亚","东欧"));
         countries.add(new Country("俄罗斯","东欧"));
+        countries.add(new Country("乌克兰","东欧"));
+        countries.add(new Country("格鲁吉亚","东欧"));
+        countries.add(new Country("阿塞拜疆","东欧"));
 
         countries.add(new Country("波兰","中欧"));
         countries.add(new Country("捷克","中欧"));
@@ -295,11 +324,11 @@ public class CountryActivity extends AppCompatActivity {
         countries.add(new Country("塞尔维亚","南欧"));
         countries.add(new Country("阿尔巴尼亚","南欧"));
         countries.add(new Country("希腊","南欧"));
-        countries.add(new Country("斯洛文尼亚","南欧"));
         countries.add(new Country("克罗地亚","南欧"));
         countries.add(new Country("意大利","南欧"));
         countries.add(new Country("西班牙","南欧"));
         countries.add(new Country("葡萄牙","南欧"));
+        countries.add(new Country("土耳其","南欧"));
 
         for (int i = 0; i < countries.size(); i++) {
             if (countries.get(i).getContinent().equals("西欧")){
