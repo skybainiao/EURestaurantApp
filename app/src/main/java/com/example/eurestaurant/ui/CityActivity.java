@@ -310,7 +310,7 @@ public class CityActivity extends AppCompatActivity {
         cities.add(new City("里昂","法国"));
         cities.add(new City("波尔多","法国"));
         cities.add(new City("普罗旺斯","法国"));
-        cities.add(new City("尼斯","法国"));
+        cities.add(new City("巴黎","法国"));
         cities.add(new City("图卢兹","法国"));
         cities.add(new City("尼斯","法国"));
 
