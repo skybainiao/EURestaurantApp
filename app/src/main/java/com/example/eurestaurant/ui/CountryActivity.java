@@ -102,6 +102,12 @@ public class CountryActivity extends AppCompatActivity {
                 button8.setVisibility(View.GONE);
                 button9.setVisibility(View.GONE);
                 button10.setVisibility(View.GONE);
+                button11.setVisibility(View.GONE);
+                button12.setVisibility(View.GONE);
+                button13.setVisibility(View.GONE);
+                button14.setVisibility(View.GONE);
+                button15.setVisibility(View.GONE);
+                button16.setVisibility(View.GONE);
             }
         });
 
@@ -119,6 +125,12 @@ public class CountryActivity extends AppCompatActivity {
                 button5.setVisibility(View.GONE);
                 button9.setVisibility(View.GONE);
                 button10.setVisibility(View.GONE);
+                button11.setVisibility(View.GONE);
+                button12.setVisibility(View.GONE);
+                button13.setVisibility(View.GONE);
+                button14.setVisibility(View.GONE);
+                button15.setVisibility(View.GONE);
+                button16.setVisibility(View.GONE);
             }
         });
 
@@ -136,6 +148,12 @@ public class CountryActivity extends AppCompatActivity {
                 button5.setVisibility(View.GONE);
                 button9.setVisibility(View.GONE);
                 button10.setVisibility(View.GONE);
+                button11.setVisibility(View.GONE);
+                button12.setVisibility(View.GONE);
+                button13.setVisibility(View.GONE);
+                button14.setVisibility(View.GONE);
+                button15.setVisibility(View.GONE);
+                button16.setVisibility(View.GONE);
             }
         });
 
@@ -153,7 +171,12 @@ public class CountryActivity extends AppCompatActivity {
                 button8.setText(nanou.get(7).getName());
                 button9.setText(nanou.get(8).getName());
                 button10.setText(nanou.get(9).getName());
-                button11.setText(nanou.get(10).getName());
+                button11.setVisibility(View.GONE);
+                button12.setVisibility(View.GONE);
+                button13.setVisibility(View.GONE);
+                button14.setVisibility(View.GONE);
+                button15.setVisibility(View.GONE);
+                button16.setVisibility(View.GONE);
             }
         });
 
@@ -175,6 +198,8 @@ public class CountryActivity extends AppCompatActivity {
                 button14.setText(dongou.get(11).getName());
                 button12.setText(dongou.get(12).getName());
                 button15.setText(dongou.get(13).getName());
+                button13.setVisibility(View.GONE);
+                button16.setVisibility(View.GONE);
             }
         });
 
@@ -260,6 +285,38 @@ public class CountryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CountryActivity.this,CityActivity.class);
+                intent.putExtra("countryName", button11.getText());
+                startActivity(intent);
+            }
+        });
+        button12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CountryActivity.this,CityActivity.class);
+                intent.putExtra("countryName", button12.getText());
+                startActivity(intent);
+            }
+        });
+        button14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CountryActivity.this,CityActivity.class);
+                intent.putExtra("countryName", button14.getText());
+                startActivity(intent);
+            }
+        });
+        button15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CountryActivity.this,CityActivity.class);
+                intent.putExtra("countryName", button15.getText());
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -278,6 +335,12 @@ public class CountryActivity extends AppCompatActivity {
         button8.setVisibility(View.VISIBLE);
         button9.setVisibility(View.VISIBLE);
         button10.setVisibility(View.VISIBLE);
+        button11.setVisibility(View.VISIBLE);
+        button12.setVisibility(View.VISIBLE);
+        button13.setVisibility(View.VISIBLE);
+        button14.setVisibility(View.VISIBLE);
+        button15.setVisibility(View.VISIBLE);
+        button16.setVisibility(View.VISIBLE);
     }
 
 
