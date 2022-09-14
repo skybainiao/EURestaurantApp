@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentHomeBinding;
 import com.example.eurestaurant.ui.CountryActivity;
+import com.example.eurestaurant.ui.RestaurantActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -37,6 +38,14 @@ public class HomeFragment extends Fragment {
         imageView=root.findViewById(R.id.imageView1);
         more=root.findViewById(R.id.more20);
         textView=root.findViewById(R.id.textView7);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RestaurantActivity.class);
+                startActivity(intent);
+            }
+        });
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

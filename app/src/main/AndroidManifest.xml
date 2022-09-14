@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EURestaurant" >
         <activity
+            android:name=".ui.RestaurantActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.CityActivity"
             android:exported="false" />
         <activity
