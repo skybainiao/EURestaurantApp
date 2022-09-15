@@ -13,6 +13,7 @@
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,7 +30,7 @@
             android:layout_width="222dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="noma餐馆"
+            android:text="大中国餐馆"
             android:textAlignment="center"
             android:textSize="28dp" />
 
@@ -118,7 +119,7 @@
                 android:text="欧店时光 app 丹麦001号。
 
 强烈推荐同学们有机会品尝一下 广东叉烧饭  李忠良 李国胜哥俩开的Lee店aboulward湖边新开的。强烈推荐。一生知道起码吃一次。一个字~到位。第一次吃叉烧饭，还是在广州工作的时候，掐指算来，也有十多年了。后来久居北欧，叉烧饭吃的少了，但是它那甜甜鲜鲜的汤汁儿渗透到每个饭粒的缝隙中，令人垂涎欲滴的超级美味却让我难以忘怀。虽然不能每次想吃叉烧饭时就前往广州，但是好在现在咱难的再有机会享受了如此美味，得嘞，以后就自己再去登门拜访体验叉烧饭解馋喽！
-
+1`
 叉烧饭好吃与否，熬好那个浓汁儿是关键，所以，做浓汁儿的步骤一定看好了，用蜂蜜代替糖，味道更棒！
 
 叉烧饭这一道美食，广东人人都吃，一小片红色的肉，竟然让咸和甜这两种天生相冲的味道得以和解。叉烧的博大精深，如同吃它的人一样，可以像蜜汁那样甜而不腻，也可以像叉烧饭那般黯然销魂。
