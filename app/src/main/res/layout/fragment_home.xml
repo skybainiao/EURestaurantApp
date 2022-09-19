@@ -82,6 +82,7 @@
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:layout_marginStart="14dp"
+                        android:id="@+id/linearLayout1"
                         android:orientation="vertical">
 
                         <ImageView
