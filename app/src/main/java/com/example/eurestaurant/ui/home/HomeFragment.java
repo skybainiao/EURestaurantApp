@@ -29,13 +29,21 @@ public class HomeFragment extends Fragment {
     private TextView textView;
 
     private LinearLayout xicandian;
+    private TextView xicandian1;
     private LinearLayout fandian;
+    private TextView fandian1;
     private LinearLayout shangdian;
+    private TextView shangdian1;
     private LinearLayout jingdian;
+    private TextView jingdian1;
     private LinearLayout lvdian;
+    private TextView lvdian1;
     private LinearLayout bowuguan;
+    private TextView bowuguan1;
     private LinearLayout jiaotong;
+    private TextView jiaotong1;
     private LinearLayout gengduofenlei;
+    private TextView gengduofenlei1;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -50,11 +58,24 @@ public class HomeFragment extends Fragment {
         more=root.findViewById(R.id.more20);
         textView=root.findViewById(R.id.textView7);
         xicandian=root.findViewById(R.id.linearLayout1);
+        xicandian1=root.findViewById(R.id.textView);
+        fandian=root.findViewById(R.id.linearLayout2);
+        fandian1=root.findViewById(R.id.textView6);
 
         xicandian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), TypesActivity.class);
+                intent.putExtra("type", xicandian1.getText());
+                startActivity(intent);
+            }
+        });
+
+        fandian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TypesActivity.class);
+                intent.putExtra("type", fandian1.getText());
                 startActivity(intent);
             }
         });

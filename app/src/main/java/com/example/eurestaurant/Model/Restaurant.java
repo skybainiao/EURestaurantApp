@@ -9,6 +9,8 @@ public class Restaurant {
     private String location;
     private String title;
     private String content;
+    private String type;
+    private String city;
     private int star1;
     private int star2;
     private int star3;
@@ -18,12 +20,14 @@ public class Restaurant {
     private int likes;
 
 
-    public Restaurant(String username,String restaurantName,String location,String title,String content,int star1,int star2,int star3,int star4,int star5,HashMap<String,String> comments,int likes){
+    public Restaurant(String username,String restaurantName,String location,String title,String content,String type,String city,int star1,int star2,int star3,int star4,int star5,HashMap<String,String> comments,int likes){
         this.username=username;
         this.restaurantName=restaurantName;
         this.location=location;
         this.title=title;
         this.content=content;
+        this.type=type;
+        this.city=city;
         this.star1=star1;
         this.star2=star2;
         this.star3=star3;
@@ -33,6 +37,14 @@ public class Restaurant {
         this.likes=likes;
     }
 
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
 
     public void setContent(String content) {
         this.content = content;
@@ -138,6 +150,7 @@ public class Restaurant {
                 ", location='" + location + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
+                ", type='" + type + '\'' +
                 ", star1=" + star1 +
                 ", star2=" + star2 +
                 ", star3=" + star3 +
