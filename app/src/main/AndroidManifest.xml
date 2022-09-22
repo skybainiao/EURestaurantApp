@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EURestaurant">
         <activity
+            android:name=".ui.SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".ui.TypesActivity"
             android:exported="false" />
@@ -26,10 +28,11 @@
             android:name=".ui.CountryActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity1"
+            android:name=".ui.LoginActivity1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
