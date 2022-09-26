@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1087984645314",
+    "project_id": "eufunapp",
+    "storage_bucket": "eufunapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1087984645314:android:dcb8230a942c7b549b775b",
+        "android_client_info": {
+          "package_name": "com.example.eurestaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1087984645314-30cal9i2auidkjlr9tfimhd582s6cmqs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh_WV4k0bipuakqvV5KlNCxy6bqYYHwIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1087984645314-30cal9i2auidkjlr9tfimhd582s6cmqs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
