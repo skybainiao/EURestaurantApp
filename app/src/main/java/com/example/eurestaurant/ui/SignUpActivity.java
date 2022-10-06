@@ -1,7 +1,9 @@
 package com.example.eurestaurant.ui;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -9,9 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eurestaurant.Model.Account;
 import com.example.eurestaurant.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -60,7 +66,32 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     public void SignUp(Account account){
-        databaseReference.child("Users").child(account.getUsername()).setValue(account);
+        if (!username.getText().toString().equals("") && !password1.getText().toString().equals("") && !password2.getText().toString().equals("")){
+            if (password1.getText().toString().equals(password2.getText().toString())){
+                databaseReference.child("Users").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        System.out.println(task.getResult().hasChild("chen"));
+                        if (!task.getResult().hasChild(username.getText().toString())){
+                            databaseReference.child("Users").child(account.getUsername()).setValue(account);
+                            Toast.makeText(getApplicationContext(),"注册成功", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"用户名已存在", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"请输入相同的密码", Toast.LENGTH_LONG).show();
+            }
+
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"用户名或者密码为空", Toast.LENGTH_LONG).show();
+        }
+
     }
 
 

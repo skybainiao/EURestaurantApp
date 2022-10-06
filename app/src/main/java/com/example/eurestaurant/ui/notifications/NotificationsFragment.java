@@ -1,20 +1,28 @@
 package com.example.eurestaurant.ui.notifications;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentNotificationsBinding;
 
 public class NotificationsFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
+    private String username;
+    private TextView username1;
+    private TextView username2;
+    private Button esc;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -23,6 +31,16 @@ public class NotificationsFragment extends Fragment {
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        Intent getIntent = getActivity().getIntent();
+        username = getIntent.getStringExtra("username");
+
+        username1=root.findViewById(R.id.textView58);
+        username2=root.findViewById(R.id.textView59);
+        esc=root.findViewById(R.id.button61);
+        username1.setText("您已登录为:");
+        username2.setText(username);
+
 
         //final TextView textView = binding.textNotifications;
         //notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
