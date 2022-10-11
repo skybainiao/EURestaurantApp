@@ -11,6 +11,8 @@ public class Restaurant {
     private String content;
     private String type;
     private String city;
+    private String country;
+    private String picture;
     private int star1;
     private int star2;
     private int star3;
@@ -20,7 +22,7 @@ public class Restaurant {
     private int likes;
 
 
-    public Restaurant(String username,String restaurantName,String location,String title,String content,String type,String city,int star1,int star2,int star3,int star4,int star5,HashMap<String,String> comments,int likes){
+    public Restaurant(String username,String restaurantName,String location,String title,String content,String type,String city,String country,String picture,int star1,int star2,int star3,int star4,int star5,HashMap<String,String> comments,int likes){
         this.username=username;
         this.restaurantName=restaurantName;
         this.location=location;
@@ -28,6 +30,8 @@ public class Restaurant {
         this.content=content;
         this.type=type;
         this.city=city;
+        this.country=country;
+        this.picture=picture;
         this.star1=star1;
         this.star2=star2;
         this.star3=star3;
@@ -44,6 +48,22 @@ public class Restaurant {
 
     public String getType() {
         return type;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getPicture() {
+        return picture;
     }
 
     public void setContent(String content) {
@@ -92,6 +112,14 @@ public class Restaurant {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getContent() {
@@ -151,6 +179,7 @@ public class Restaurant {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", type='" + type + '\'' +
+                ", city='" + city + '\'' +
                 ", star1=" + star1 +
                 ", star2=" + star2 +
                 ", star3=" + star3 +
