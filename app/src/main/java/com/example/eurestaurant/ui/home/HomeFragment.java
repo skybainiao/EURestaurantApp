@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentHomeBinding;
+import com.example.eurestaurant.ui.AddRestaurant;
 import com.example.eurestaurant.ui.CountryActivity;
 import com.example.eurestaurant.ui.RestaurantActivity;
 import com.example.eurestaurant.ui.TypesActivity;
@@ -83,7 +84,7 @@ public class HomeFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RestaurantActivity.class);
+                Intent intent = new Intent(getActivity(), AddRestaurant.class);
                 startActivity(intent);
             }
         });

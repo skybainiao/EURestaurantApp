@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentNotificationsBinding;
+import com.example.eurestaurant.ui.AddRestaurant;
+import com.example.eurestaurant.ui.LoginActivity1;
 
 public class NotificationsFragment extends Fragment {
 
@@ -40,6 +42,15 @@ public class NotificationsFragment extends Fragment {
         esc=root.findViewById(R.id.button61);
         username1.setText("您已登录为:");
         username2.setText(username);
+
+        esc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onDestroyView();
+                Intent intent = new Intent(getActivity(), LoginActivity1.class);
+                startActivity(intent);
+            }
+        });
 
 
         //final TextView textView = binding.textNotifications;
