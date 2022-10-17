@@ -7,23 +7,25 @@
     tools:context=".ui.AddRestaurant">
 
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="889dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -62,7 +64,7 @@
                 <EditText
                     android:id="@+id/editTextTextPersonName4"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:layout_marginTop="20dp"
                     android:hint="餐厅名称"
@@ -85,7 +87,7 @@
                 <EditText
                     android:id="@+id/editTextTextPersonName5"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:hint="信息标题"
                     android:layout_marginTop="10dp"
@@ -108,7 +110,7 @@
                 <EditText
                     android:id="@+id/editTextTextPersonName6"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:hint="餐厅类型"
                     android:textAlignment="center"
@@ -131,7 +133,7 @@
                 <EditText
                     android:id="@+id/editTextTextPersonName7"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:hint="城市名称"
                     android:layout_marginTop="10dp"
@@ -153,7 +155,7 @@
                 <EditText
                     android:id="@+id/editTextTextPersonName8"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:hint="国家名称"
                     android:textAlignment="center"
@@ -176,7 +178,7 @@
                 <EditText
                     android:id="@+id/editTextTextPersonName9"
                     android:layout_width="0dp"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:hint="详细地址"
                     android:textAlignment="center"
