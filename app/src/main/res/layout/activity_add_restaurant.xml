@@ -18,12 +18,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -57,21 +57,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView62"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="餐厅名称:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+
 
                 <EditText
                     android:id="@+id/editTextTextPersonName4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:layout_marginTop="20dp"
+                    android:hint="餐厅名称"
+                    android:textAlignment="center"
                     android:background="@drawable/shape"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -85,21 +80,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView63"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="信息标题:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+
 
                 <EditText
                     android:id="@+id/editTextTextPersonName5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:hint="信息标题"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
                     android:background="@drawable/shape"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -113,21 +103,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView64"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="餐厅类型:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+
 
                 <EditText
                     android:id="@+id/editTextTextPersonName6"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:hint="餐厅类型"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/shape"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -141,21 +126,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView65"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="城市名称:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+
 
                 <EditText
                     android:id="@+id/editTextTextPersonName7"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:hint="城市名称"
+                    android:layout_marginTop="10dp"
+                    android:textAlignment="center"
                     android:background="@drawable/shape"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -169,22 +149,16 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView66"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="国家名称:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName8"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:hint="国家名称"
+                    android:textAlignment="center"
                     android:background="@drawable/shape"
+                    android:layout_marginTop="10dp"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text=""
@@ -197,23 +171,18 @@
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView67"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="详细地址:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
+
 
                 <EditText
                     android:id="@+id/editTextTextPersonName9"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:hint="详细地址"
+                    android:textAlignment="center"
                     android:background="@drawable/shape"
                     android:ems="10"
+                    android:layout_marginTop="10dp"
                     android:inputType="textPersonName"
                     android:text=""
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -221,29 +190,23 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="118dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView69"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="发布内容:"
-                    android:textAlignment="center"
-                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/editTextTextPersonName10"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="100dp"
-
-                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
+                    android:background="@drawable/shape"
                     android:ems="10"
+                    android:hint="发布内容"
                     android:inputType="textPersonName"
                     android:text=""
+                    android:textAlignment="center"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
 
