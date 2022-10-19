@@ -29,6 +29,7 @@ public class HomeFragment extends Fragment {
     private TextView more;
     private TextView textView;
 
+    private String username;
     private LinearLayout xicandian;
     private TextView xicandian1;
     private LinearLayout fandian;
@@ -53,6 +54,9 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        Intent getIntent = getActivity().getIntent();
+        username = getIntent.getStringExtra("username");
 
         linearLayout=root.findViewById(R.id.linearLayoutMax);
         imageView=root.findViewById(R.id.imageView1);
@@ -85,7 +89,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AddRestaurant.class);
+                intent.putExtra("username", username);
                 startActivity(intent);
+
+
+
             }
         });
 
