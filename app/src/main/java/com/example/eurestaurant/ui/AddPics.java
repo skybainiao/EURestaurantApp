@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,66 +15,41 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.eurestaurant.Model.Restaurant;
 import com.example.eurestaurant.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class AddRestaurant extends AppCompatActivity {
+public class AddPics extends AppCompatActivity {
 
-    private int PICK_IMAGE_REQUEST = 111;
-    private Uri filePath;
-    private String username;
     private ImageView imageView;
-    private EditText restaurantName;
-    private EditText infoTitle;
-    private EditText restaurantType;
-    private EditText cityName;
-    private EditText countryName;
-    private EditText addressDetail;
-    private EditText content;
-    private ImageView uploadImg;
-    private Button chooseImg;
-    private Button upload;
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    private Button button1;
+    private Button button2;
+    private EditText editText;
     private FirebaseStorage storage;
     private StorageReference storageRef;
+    private int PICK_IMAGE_REQUEST = 111;
+    private Uri filePath;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_restaurant);
+        setContentView(R.layout.activity_add_pics);
 
-        Intent getIntent = getIntent();
-        username = getIntent.getStringExtra("username");
-        System.out.println(username);
-        System.out.println("///////////////////////"+username);
 
-        firebaseDatabase=FirebaseDatabase.getInstance("https://eufunapp-default-rtdb.europe-west1.firebasedatabase.app/");
-        databaseReference=firebaseDatabase.getReference();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
-
-        imageView=findViewById(R.id.imageView37);
-        restaurantName=findViewById(R.id.editTextTextPersonName4);
-        infoTitle=findViewById(R.id.editTextTextPersonName5);
-        restaurantType=findViewById(R.id.editTextTextPersonName6);
-        cityName=findViewById(R.id.editTextTextPersonName7);
-        countryName=findViewById(R.id.editTextTextPersonName8);
-        addressDetail=findViewById(R.id.editTextTextPersonName9);
-        content=findViewById(R.id.editTextTextPersonName10);
-        uploadImg=findViewById(R.id.imageView42);
-        chooseImg=findViewById(R.id.button62);
-        upload=findViewById(R.id.button63);
+        imageView=findViewById(R.id.imageView39);
+        button1=findViewById(R.id.button66);
+        button2=findViewById(R.id.button67);
+        editText=findViewById(R.id.editTextTextPersonName11);
 
 
-        chooseImg.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @SuppressWarnings("deprecation")
             @Override
             public void onClick(View v) {
@@ -86,15 +60,13 @@ public class AddRestaurant extends AppCompatActivity {
             }
         });
 
-        upload.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                uploadInfo();
-
                 if(filePath != null) {
                     System.out.println("pppppppppppppp"+getEntryName(filePath.getPath()));
-                    StorageReference childRef = storageRef.child(restaurantName.getText().toString()+"/"+getEntryName(filePath.getPath()));
+                    StorageReference childRef = storageRef.child(editText.getText().toString()+"/"+getEntryName(filePath.getPath()));
 
                     UploadTask uploadTask = childRef.putFile(filePath);
 
@@ -120,18 +92,6 @@ public class AddRestaurant extends AppCompatActivity {
 
     }
 
-
-
-    public void uploadInfo(){
-        Restaurant restaurant = new Restaurant(username,restaurantName.getText().toString(),addressDetail.getText().toString(),
-                infoTitle.getText().toString(),content.getText().toString(),restaurantType.getText().toString(),
-                cityName.getText().toString(),countryName.getText().toString(),"",0,0,0,0,0,null,0);
-
-
-        databaseReference.child("Restaurant").child(restaurant.getRestaurantName()).setValue(restaurant);
-    }
-
-
     @SuppressWarnings("deprecation")
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -143,7 +103,7 @@ public class AddRestaurant extends AppCompatActivity {
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), filePath);
 
-                uploadImg.setImageBitmap(bitmap);
+                imageView.setImageBitmap(bitmap);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -164,14 +124,6 @@ public class AddRestaurant extends AppCompatActivity {
         }
         return "";
     }
-
-
-
-
-
-
-
-
 
 
 

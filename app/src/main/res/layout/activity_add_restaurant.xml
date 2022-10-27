@@ -217,7 +217,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="246dp"
                 android:layout_marginTop="20dp"
-                tools:srcCompat="@android:drawable/ic_menu_crop" />
+                app:srcCompat="@android:drawable/ic_menu_crop" />
 
             <Button
                 android:id="@+id/button62"
@@ -229,7 +229,7 @@
                 android:id="@+id/button63"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
                 android:text="提交信息" />
 
         </LinearLayout>
