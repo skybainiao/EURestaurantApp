@@ -38,10 +38,7 @@ public class HomeFragment extends Fragment {
     private ImageView imageView;
     private TextView more;
     private TextView textView;
-    private Context mContext;
-    private GridView grid_photo;
-    private BaseAdapter mAdapter = null;
-    private ArrayList<Pic> mData = null;
+
 
     private String username;
     private LinearLayout xicandian;
@@ -69,40 +66,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        mContext = getContext();
-        grid_photo = (GridView) root.findViewById(R.id.grid_photo);
-
-        mData = new ArrayList<Pic>();
-        mData.add(new Pic(R.mipmap.b, "大中国餐馆"));
-        mData.add(new Pic(R.mipmap.iv_icon_2, "图标2"));
-        mData.add(new Pic(R.mipmap.iv_icon_3, "图标3"));
-        mData.add(new Pic(R.mipmap.iv_icon_4, "图标4"));
-        mData.add(new Pic(R.mipmap.iv_icon_5, "图标5"));
-        mData.add(new Pic(R.mipmap.iv_icon_6, "图标6"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-        mData.add(new Pic(R.mipmap.iv_icon_7, "图标7"));
-
-        mAdapter = new MyAdapter<Pic>(mData, R.layout.item_grid_icon) {
-            @Override
-            public void bindView(ViewHolder holder, Pic obj) {
-                holder.setImageResource(R.id.img_icon, obj.getId());
-                holder.setText(R.id.txt_icon, obj.getName());
-            }
-        };
-
-        grid_photo.setAdapter(mAdapter);
-
-        grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext, "你点击了~" + position + "~项", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
         Intent getIntent = getActivity().getIntent();

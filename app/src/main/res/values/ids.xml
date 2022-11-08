@@ -2,4 +2,6 @@
 <resources>
     <item name="textView23" type="id" />
     <item name="textView11" type="id" />
+    <item name="imageView15" type="id" />
+    <item name="textView14" type="id" />
 </resources>
