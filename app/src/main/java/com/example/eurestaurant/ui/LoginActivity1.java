@@ -42,6 +42,7 @@ import java.util.Locale;
 public class LoginActivity1 extends AppCompatActivity {
 
     private TextView signUp;
+    private TextView tx51;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private EditText username;
@@ -65,6 +66,15 @@ public class LoginActivity1 extends AppCompatActivity {
         password=findViewById(R.id.editTextTextPassword);
         signIn=findViewById(R.id.button59);
         progressBar=findViewById(R.id.progressBar);
+        tx51=findViewById(R.id.textView51);
+
+        tx51.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         signIn.setOnClickListener(new View.OnClickListener() {
