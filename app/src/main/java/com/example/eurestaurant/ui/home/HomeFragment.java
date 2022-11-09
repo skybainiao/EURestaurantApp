@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        num=3;
+        num=8;
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         StorageReference ref = storageReference.child("mmexport1663173155480.jpg");
