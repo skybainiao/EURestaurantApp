@@ -2,6 +2,10 @@ package com.example.eurestaurant.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +23,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.Options;
 import com.example.eurestaurant.Adapter.MyAdapter;
+import com.example.eurestaurant.MainActivity;
 import com.example.eurestaurant.Model.Pic;
 import com.example.eurestaurant.R;
 import com.example.eurestaurant.databinding.FragmentHomeBinding;
@@ -28,6 +35,15 @@ import com.example.eurestaurant.ui.ChooseUploadType;
 import com.example.eurestaurant.ui.CountryActivity;
 import com.example.eurestaurant.ui.RestaurantActivity;
 import com.example.eurestaurant.ui.TypesActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -38,6 +54,8 @@ public class HomeFragment extends Fragment {
     private ImageView imageView;
     private TextView more;
     private TextView textView;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
 
     private String username;
@@ -57,6 +75,8 @@ public class HomeFragment extends Fragment {
     private TextView jiaotong1;
     private LinearLayout gengduofenlei;
     private TextView gengduofenlei1;
+    private LinearLayout linearLayout3;
+    private int num;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -65,8 +85,10 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-
+        num=3;
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+        StorageReference ref = storageReference.child("mmexport1663173155480.jpg");
 
         Intent getIntent = getActivity().getIntent();
         username = getIntent.getStringExtra("username");
@@ -79,6 +101,65 @@ public class HomeFragment extends Fragment {
         xicandian1=root.findViewById(R.id.textView);
         fandian=root.findViewById(R.id.linearLayout2);
         fandian1=root.findViewById(R.id.textView6);
+        linearLayout3=root.findViewById(R.id.linearLayout3);
+
+
+
+        final long ONE_MEGABYTE = 1024 * 1024 * 5;
+
+
+
+
+        for (int i = 0; i < num; i++) {
+            LinearLayout linearLayout = new LinearLayout(getContext());
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            ImageView imageView = new ImageView(getContext());
+            //set img
+            //imageView.setImageResource(R.mipmap.d);
+            ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                    imageView.setImageBitmap(bitmap);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle any errors
+                }
+            });
+
+            TextView title = new TextView(getContext());
+            title.setText("Hello Denmark");
+            title.setTextSize(20);
+            LinearLayout linearLayout1 = new LinearLayout(getContext());
+            TextView username = new TextView(getContext());
+            username.setText("Chen");
+            TextView like = new TextView(getContext());
+            like.setText("❤2.5");
+            like.setWidth(400);
+            like.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            linearLayout1.setPadding(0,0,0,0);
+            like.setPadding(0,0,-265,0);
+
+            linearLayout.addView(imageView);
+            linearLayout.addView(title);
+            linearLayout3.addView(linearLayout);
+            linearLayout1.addView(username);
+            linearLayout1.addView(like);
+            linearLayout3.addView(linearLayout1);
+
+            linearLayout3.setPadding(0,0,0,0);
+            linearLayout.setPadding(0,-270,0,0);
+            title.setPadding(0,0,0,0);
+            imageView.setPadding(0,0,0,-300);
+        }
+
+
+
+
+
+
 
         xicandian.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +211,23 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+
+    public void margin(View v, int l, int t, int r, int b) {
+        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            p.setMargins(l, t, r, b);
+            v.requestLayout();
+        }
+    }
+
+    public static Bitmap getPicFromBytes(byte[] bytes,BitmapFactory.Options opts) {
+        if (bytes != null)
+            if (opts != null)
+                return BitmapFactory.decodeByteArray(bytes, 0, bytes.length,opts);
+            else
+                return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        return null;
+    }
 
     public void getMoreCities(){
 
