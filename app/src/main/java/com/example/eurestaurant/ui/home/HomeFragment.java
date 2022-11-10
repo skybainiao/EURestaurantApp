@@ -39,13 +39,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
@@ -55,8 +62,13 @@ public class HomeFragment extends Fragment {
     private TextView more;
     private TextView textView;
     private FirebaseStorage storage;
-    private StorageReference storageReference;
-
+    private StorageReference ref;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private ArrayList<TextView> textViews;
+    private ArrayList<String> arrayList1;
+    private Map<String,TextView> map = new HashMap<>();
+    private int a=0;
 
     private String username;
     private LinearLayout xicandian;
@@ -85,10 +97,14 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        num=8;
+        num=3;
+        textViews=new ArrayList<>();
+        arrayList1=new ArrayList<>();
         storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
-        StorageReference ref = storageReference.child("mmexport1663173155480.jpg");
+        ref = storage.getReference();
+        //StorageReference ref = storageReference.child("mmexport1663173155480.jpg");
+        firebaseDatabase=FirebaseDatabase.getInstance("https://eufunapp-default-rtdb.europe-west1.firebasedatabase.app/");
+        databaseReference=firebaseDatabase.getReference();
 
         Intent getIntent = getActivity().getIntent();
         username = getIntent.getStringExtra("username");
@@ -116,7 +132,30 @@ public class HomeFragment extends Fragment {
             ImageView imageView = new ImageView(getContext());
             //set img
             //imageView.setImageResource(R.mipmap.d);
-            ref.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+
+
+            ref.child("cjj").listAll()
+                    .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                        @Override
+                        public void onSuccess(ListResult listResult) {
+                            for (StorageReference prefix : listResult.getPrefixes()) {
+                                // All the prefixes under listRef.
+                                // You may call listAll() recursively on them.
+                            }
+
+                            for (StorageReference item : listResult.getItems()) {
+                                // All the items under listRef.
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Uh-oh, an error occurred!
+                        }
+                    });
+
+            ref.child("大中国/mmexport1663173135141.jpg").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
                 @Override
                 public void onSuccess(byte[] bytes) {
                     Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
@@ -128,8 +167,12 @@ public class HomeFragment extends Fragment {
                     // Handle any errors
                 }
             });
+            
 
+            a++;
             TextView title = new TextView(getContext());
+            map.put(String.valueOf(a),title);
+            textViews.add(title);
             title.setText("Hello Denmark");
             title.setTextSize(20);
             LinearLayout linearLayout1 = new LinearLayout(getContext());
@@ -150,11 +193,38 @@ public class HomeFragment extends Fragment {
             linearLayout3.addView(linearLayout1);
 
             linearLayout3.setPadding(0,0,0,0);
-            linearLayout.setPadding(0,-270,0,0);
+            linearLayout.setPadding(0,50,0,0);
             title.setPadding(0,0,0,0);
-            imageView.setPadding(0,0,0,-300);
-        }
+            imageView.setPadding(0,0,0,0);
+            imageView.setAdjustViewBounds(true);
+            ViewGroup.LayoutParams lp = imageView.getLayoutParams();
+            lp.height= ViewGroup.LayoutParams.WRAP_CONTENT;
+            //lp.width=450;
+            //lp.height=520;
 
+
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot pair : snapshot.child("Restaurant").getChildren()){
+                        arrayList1.add(pair.child("restaurantName").getValue().toString());
+                    }
+                    System.out.println(arrayList1.toString());
+                    for (int i = 0; i < textViews.size(); i++) {
+                        textViews.get(i).setText(arrayList1.get(i));
+                        //title.setText(arrayList1.get(0));
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
 
 
 
