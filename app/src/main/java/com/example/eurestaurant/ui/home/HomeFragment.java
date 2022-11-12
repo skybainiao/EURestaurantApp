@@ -67,8 +67,13 @@ public class HomeFragment extends Fragment {
     private DatabaseReference databaseReference;
     private ArrayList<TextView> textViews;
     private ArrayList<String> arrayList1;
+    private ArrayList<String> restName;
+    private ArrayList<TextView> restNameText;
+    private ArrayList<ImageView> imageViews;
+    private ArrayList<String> referenceName;
     private Map<String,TextView> map = new HashMap<>();
     private int a=0;
+    private ArrayList<StorageReference> storageReferences;
 
     private String username;
     private LinearLayout xicandian;
@@ -97,9 +102,14 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        num=3;
+
         textViews=new ArrayList<>();
         arrayList1=new ArrayList<>();
+        storageReferences=new ArrayList<>();
+        restNameText=new ArrayList<>();
+        restName=new ArrayList<>();
+        imageViews=new ArrayList<>();
+        referenceName=new ArrayList<>();
         storage = FirebaseStorage.getInstance();
         ref = storage.getReference();
         //StorageReference ref = storageReference.child("mmexport1663173155480.jpg");
@@ -108,6 +118,8 @@ public class HomeFragment extends Fragment {
 
         Intent getIntent = getActivity().getIntent();
         username = getIntent.getStringExtra("username");
+        num = getIntent.getIntExtra("num",2);
+        System.out.println(num);
 
         linearLayout=root.findViewById(R.id.linearLayoutMax);
         imageView=root.findViewById(R.id.imageView1);
@@ -126,47 +138,30 @@ public class HomeFragment extends Fragment {
 
 
 
+
         for (int i = 0; i < num; i++) {
             LinearLayout linearLayout = new LinearLayout(getContext());
             linearLayout.setOrientation(LinearLayout.VERTICAL);
             ImageView imageView = new ImageView(getContext());
+            imageViews.add(imageView);
             //set img
             //imageView.setImageResource(R.mipmap.d);
 
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaa"+referenceName);
 
-            ref.child("cjj").listAll()
-                    .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                        @Override
-                        public void onSuccess(ListResult listResult) {
-                            for (StorageReference prefix : listResult.getPrefixes()) {
-                                // All the prefixes under listRef.
-                                // You may call listAll() recursively on them.
-                            }
 
-                            for (StorageReference item : listResult.getItems()) {
-                                // All the items under listRef.
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Uh-oh, an error occurred!
-                        }
-                    });
-
-            ref.child("大中国/mmexport1663173135141.jpg").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                    imageView.setImageBitmap(bitmap);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle any errors
-                }
-            });
+            //ref.child("大中国/mmexport1663173135141.jpg").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            //    @Override
+            //    public void onSuccess(byte[] bytes) {
+            //        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            //        imageView.setImageBitmap(bitmap);
+            //    }
+            //}).addOnFailureListener(new OnFailureListener() {
+            //    @Override
+            //    public void onFailure(@NonNull Exception exception) {
+            //        // Handle any errors
+            //    }
+            //});
             
 
             a++;
@@ -176,19 +171,19 @@ public class HomeFragment extends Fragment {
             title.setText("Hello Denmark");
             title.setTextSize(20);
             LinearLayout linearLayout1 = new LinearLayout(getContext());
-            TextView username = new TextView(getContext());
-            username.setText("Chen");
+            TextView cantin = new TextView(getContext());
+            restNameText.add(cantin);
             TextView like = new TextView(getContext());
             like.setText("❤2.5");
             like.setWidth(400);
             like.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             linearLayout1.setPadding(0,0,0,0);
-            like.setPadding(0,0,-265,0);
+            like.setPadding(0,0,0,0);
 
             linearLayout.addView(imageView);
             linearLayout.addView(title);
             linearLayout3.addView(linearLayout);
-            linearLayout1.addView(username);
+            linearLayout1.addView(cantin);
             linearLayout1.addView(like);
             linearLayout3.addView(linearLayout1);
 
@@ -208,11 +203,15 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     for(DataSnapshot pair : snapshot.child("Restaurant").getChildren()){
-                        arrayList1.add(pair.child("restaurantName").getValue().toString());
+                        arrayList1.add(pair.child("title").getValue().toString());
+                        restName.add(pair.child("restaurantName").getValue().toString());
                     }
                     System.out.println(arrayList1.toString());
                     for (int i = 0; i < textViews.size(); i++) {
                         textViews.get(i).setText(arrayList1.get(i));
+                        restNameText.get(i).setText(restName.get(i));
+                        imageViews.get(i).setTag(restName.get(i));
+                        System.out.println("/////////////"+imageViews.get(i).getTag());
                         //title.setText(arrayList1.get(0));
                     }
 
@@ -224,7 +223,60 @@ public class HomeFragment extends Fragment {
                 }
             });
 
+
+
         }
+        StorageReference listRef = storage.getReference();
+
+        System.out.println("wwwwwwwwwwwwwwwwwwwww");
+        listRef.listAll()
+                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        for (StorageReference prefix : listResult.getPrefixes()) {
+                            System.out.println("text1////"+prefix.getPath());
+                            for (int i = 0; i < imageViews.size(); i++) {
+                                if (prefix.getPath().equals("/"+imageViews.get(i).getTag())){
+                                    System.out.println("text3//////"+prefix.getPath());
+                                    prefix.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                                        @Override
+                                        public void onSuccess(ListResult listResult) {
+                                            for (StorageReference item : listResult.getItems()) {
+                                                item.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                                                    @Override
+                                                    public void onSuccess(byte[] bytes) {
+                                                        for (int j = 0; j < imageViews.size(); j++) {
+                                                            if (item.getPath().contains(imageViews.get(j).getTag().toString())){
+                                                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                                                                imageViews.get(j).setImageBitmap(bitmap);
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        }
+
+                        for (StorageReference item : listResult.getItems()) {
+                            if (item.getPath().contains("大中国")){
+                                System.out.println("text2////"+item.getPath());
+                            }
+                            storageReferences.add(item);
+                            referenceName.add(item.getPath());
+                            //System.out.println(referenceName);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        System.out.println(e);
+                    }
+                });
+
 
 
 

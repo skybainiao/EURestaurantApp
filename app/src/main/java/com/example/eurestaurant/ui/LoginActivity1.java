@@ -50,6 +50,7 @@ public class LoginActivity1 extends AppCompatActivity {
     private Button signIn;
     private ProgressBar progressBar;
     private ArrayList<Account> users = new ArrayList<>();
+    private int num;
 
 
     @Override
@@ -60,6 +61,18 @@ public class LoginActivity1 extends AppCompatActivity {
 
         firebaseDatabase=FirebaseDatabase.getInstance("https://eufunapp-default-rtdb.europe-west1.firebasedatabase.app/");
         databaseReference=firebaseDatabase.getReference();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                num=(int) snapshot.child("Restaurant").getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         signUp=findViewById(R.id.textView53);
         username=findViewById(R.id.editTextTextPersonName2);
@@ -72,6 +85,7 @@ public class LoginActivity1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
+                intent.putExtra("num", num);
                 startActivity(intent);
             }
         });
@@ -89,6 +103,7 @@ public class LoginActivity1 extends AppCompatActivity {
                                 finish();
                                 Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
                                 intent.putExtra("username", username.getText().toString());
+                                intent.putExtra("num", num);
                                 startActivity(intent);
                             }
                             else {
