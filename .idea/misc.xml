@@ -32,6 +32,8 @@
         <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.184" />
         <entry key="..\:/Users/45527/AndroidStudioProjects/EURestaurantApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.286" />
         <entry key="app/src/main/res/drawable/imageshape.xml" value="0.2155" />
+        <entry key="app/src/main/res/layout/activity_add_pics.xml" value="0.21034630183839248" />
+        <entry key="app/src/main/res/layout/activity_add_restaurant.xml" value="0.21034630183839248" />
         <entry key="app/src/main/res/layout/activity_city.xml" value="0.21034630183839248" />
         <entry key="app/src/main/res/layout/activity_country.xml" value="0.21034630183839248" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2649429321289063" />

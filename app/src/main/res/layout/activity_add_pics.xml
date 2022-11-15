@@ -18,13 +18,13 @@
         <EditText
             android:id="@+id/editTextTextPersonName11"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_marginTop="100dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
             android:background="@drawable/shape"
-            android:hint="餐厅名称" />
+            android:ems="10"
+            android:hint="餐厅名称"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/imageView39"

@@ -23,8 +23,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.Options;
 import com.example.eurestaurant.Adapter.MyAdapter;
 import com.example.eurestaurant.MainActivity;
 import com.example.eurestaurant.Model.Pic;
