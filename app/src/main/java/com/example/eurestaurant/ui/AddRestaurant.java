@@ -26,10 +26,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+
 public class AddRestaurant extends AppCompatActivity {
 
     private int PICK_IMAGE_REQUEST = 111;
     private Uri filePath;
+    private ArrayList<Uri> uris;
     private String username;
     private ImageView imageView;
     private EditText restaurantName;
@@ -40,6 +43,16 @@ public class AddRestaurant extends AppCompatActivity {
     private EditText addressDetail;
     private EditText content;
     private ImageView uploadImg;
+    private ImageView uploadImg1;
+    private ImageView uploadImg2;
+    private ImageView uploadImg3;
+    private ImageView uploadImg4;
+    private ImageView uploadImg5;
+    private ImageView uploadImg6;
+    private ImageView uploadImg7;
+    private ImageView uploadImg8;
+    private ImageView uploadImg9;
+    private ArrayList<ImageView> imageViews;
     private Button chooseImg;
     private Button upload;
     private FirebaseDatabase firebaseDatabase;
@@ -52,6 +65,8 @@ public class AddRestaurant extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
 
+        imageViews=new ArrayList<>();
+        uris=new ArrayList<>();
         Intent getIntent = getIntent();
         username = getIntent.getStringExtra("username");
         System.out.println(username);
@@ -71,49 +86,73 @@ public class AddRestaurant extends AppCompatActivity {
         addressDetail=findViewById(R.id.editTextTextPersonName9);
         content=findViewById(R.id.editTextTextPersonName10);
         uploadImg=findViewById(R.id.imageView42);
-        chooseImg=findViewById(R.id.button62);
+        uploadImg1=findViewById(R.id.imageView28);
+        uploadImg2=findViewById(R.id.imageView23);
+        uploadImg3=findViewById(R.id.imageView22);
+        uploadImg4=findViewById(R.id.imageView21);
+        uploadImg5=findViewById(R.id.imageView18);
+        uploadImg6=findViewById(R.id.imageView17);
+        uploadImg7=findViewById(R.id.imageView10);
+        uploadImg8=findViewById(R.id.imageView9);
+        uploadImg9=findViewById(R.id.imageView8);
+        imageViews.add(uploadImg);
+        imageViews.add(uploadImg1);
+        imageViews.add(uploadImg2);
+        imageViews.add(uploadImg3);
+        imageViews.add(uploadImg4);
+        imageViews.add(uploadImg5);
+        imageViews.add(uploadImg6);
+        imageViews.add(uploadImg7);
+        imageViews.add(uploadImg8);
+        imageViews.add(uploadImg9);
+        //chooseImg=findViewById(R.id.button62);
         upload=findViewById(R.id.button63);
 
 
-        chooseImg.setOnClickListener(new View.OnClickListener() {
-            @SuppressWarnings("deprecation")
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_PICK);
-                startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
-            }
-        });
+
+        for (int i = 0; i < imageViews.size(); i++) {
+            imageViews.get(i).setTag("n");
+            imageViews.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_PICK);
+                    startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST);
+                }
+            });
+        }
+
 
         upload.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 uploadInfo();
+                for (int i = 0; i < uris.size(); i++) {
+                    if (uris.get(i)!=null){
+                        System.out.println("pppppppppppppp"+getEntryName(uris.get(i).getPath()));
+                        StorageReference childRef = storageRef.child(restaurantName.getText().toString()+"/"+getEntryName(uris.get(i).getPath()));
 
-                if(filePath != null) {
-                    System.out.println("pppppppppppppp"+getEntryName(filePath.getPath()));
-                    StorageReference childRef = storageRef.child(restaurantName.getText().toString()+"/"+getEntryName(filePath.getPath()));
+                        UploadTask uploadTask = childRef.putFile(uris.get(i));
 
-                    UploadTask uploadTask = childRef.putFile(filePath);
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                Toast.makeText(getApplicationContext(), "Upload successful", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
 
-                            Toast.makeText(getApplicationContext(), "Upload successful", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                            Toast.makeText(getApplicationContext(), "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Select an image", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Upload Failed -> " + e, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Select an image", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -139,11 +178,20 @@ public class AddRestaurant extends AppCompatActivity {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
+            uris.add(filePath);
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), filePath);
 
-                uploadImg.setImageBitmap(bitmap);
+                for (int i = 0; i < imageViews.size(); i++) {
+                    if (imageViews.get(i).getTag().equals("n")){
+                        imageViews.get(i).setImageBitmap(bitmap);
+                        imageViews.get(i).setTag("y");
+                        break;
+                    }
+
+                }
+                //uploadImg.setImageBitmap(bitmap);
             } catch (Exception e) {
                 e.printStackTrace();
             }
