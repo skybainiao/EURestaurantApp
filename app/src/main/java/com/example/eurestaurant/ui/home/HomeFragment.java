@@ -91,6 +91,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout gengduofenlei;
     private TextView gengduofenlei1;
     private LinearLayout linearLayout3;
+    private LinearLayout linearLayout4;
     private int num;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -128,11 +129,9 @@ public class HomeFragment extends Fragment {
         fandian=root.findViewById(R.id.linearLayout2);
         fandian1=root.findViewById(R.id.textView6);
         linearLayout3=root.findViewById(R.id.linearLayout3);
-
-
+        linearLayout4=root.findViewById(R.id.linearLayout4);
 
         final long ONE_MEGABYTE = 1024 * 1024 * 5;
-
 
 
 
@@ -142,58 +141,25 @@ public class HomeFragment extends Fragment {
             linearLayout.setOrientation(LinearLayout.VERTICAL);
             ImageView imageView = new ImageView(getContext());
             imageViews.add(imageView);
-            //set img
-            //imageView.setImageResource(R.mipmap.d);
-
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaa"+referenceName);
-
-
-            //ref.child("大中国/mmexport1663173135141.jpg").getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            //    @Override
-            //    public void onSuccess(byte[] bytes) {
-            //        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-            //        imageView.setImageBitmap(bitmap);
-            //    }
-            //}).addOnFailureListener(new OnFailureListener() {
-            //    @Override
-            //    public void onFailure(@NonNull Exception exception) {
-            //        // Handle any errors
-            //    }
-            //});
-            
-
-            a++;
             TextView title = new TextView(getContext());
-            map.put(String.valueOf(a),title);
             textViews.add(title);
-            title.setText("Hello Denmark");
             title.setTextSize(20);
             LinearLayout linearLayout1 = new LinearLayout(getContext());
             TextView cantin = new TextView(getContext());
             restNameText.add(cantin);
-            TextView like = new TextView(getContext());
-            like.setText("❤2.5");
-            like.setWidth(400);
-            like.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            linearLayout1.setPadding(0,0,0,0);
-            like.setPadding(0,0,0,0);
-
             linearLayout.addView(imageView);
             linearLayout.addView(title);
-            linearLayout3.addView(linearLayout);
             linearLayout1.addView(cantin);
-            linearLayout1.addView(like);
-            linearLayout3.addView(linearLayout1);
-
-            linearLayout3.setPadding(0,0,0,0);
-            linearLayout.setPadding(0,50,0,0);
-            title.setPadding(0,0,0,0);
-            imageView.setPadding(0,0,0,0);
             imageView.setAdjustViewBounds(true);
-            ViewGroup.LayoutParams lp = imageView.getLayoutParams();
-            lp.height= ViewGroup.LayoutParams.WRAP_CONTENT;
-            //lp.width=450;
-            //lp.height=520;
+
+            if (isOdd(i)){
+                linearLayout3.addView(linearLayout);
+                linearLayout3.addView(linearLayout1);
+            }
+            else {
+                linearLayout4.addView(linearLayout);
+                linearLayout4.addView(linearLayout1);
+            }
 
 
 
@@ -209,8 +175,6 @@ public class HomeFragment extends Fragment {
                         textViews.get(i).setText(arrayList1.get(i));
                         restNameText.get(i).setText(restName.get(i));
                         imageViews.get(i).setTag(restName.get(i));
-                        System.out.println("/////////////"+imageViews.get(i).getTag());
-                        //title.setText(arrayList1.get(0));
                     }
 
                 }
@@ -221,9 +185,9 @@ public class HomeFragment extends Fragment {
                 }
             });
 
-
-
         }
+
+
         StorageReference listRef = storage.getReference();
 
         System.out.println("wwwwwwwwwwwwwwwwwwwww");
@@ -319,18 +283,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //more.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        //        Intent intent = new Intent(getActivity(), CountryActivity.class);
-        //        startActivity(intent);
-        //    }
-        //});
 
 
         return root;
     }
 
+    public boolean isOdd(int a){
+        if((a&1) != 1){   //是偶数
+            return true;
+        }
+        return false;
+    }
 
     public void margin(View v, int l, int t, int r, int b) {
         if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
@@ -352,6 +315,7 @@ public class HomeFragment extends Fragment {
     public void getMoreCities(){
 
     }
+
 
 
 
