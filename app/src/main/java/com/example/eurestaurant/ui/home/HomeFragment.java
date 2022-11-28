@@ -93,6 +93,8 @@ public class HomeFragment extends Fragment {
     private LinearLayout linearLayout3;
     private LinearLayout linearLayout4;
     private int num;
+    private LinearLayout linearLayoutx;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -137,8 +139,8 @@ public class HomeFragment extends Fragment {
 
 
         for (int i = 0; i < num; i++) {
-            LinearLayout linearLayout = new LinearLayout(getContext());
-            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            linearLayoutx = new LinearLayout(getContext());
+            linearLayoutx.setOrientation(LinearLayout.VERTICAL);
             ImageView imageView = new ImageView(getContext());
             imageViews.add(imageView);
             TextView title = new TextView(getContext());
@@ -147,17 +149,17 @@ public class HomeFragment extends Fragment {
             LinearLayout linearLayout1 = new LinearLayout(getContext());
             TextView cantin = new TextView(getContext());
             restNameText.add(cantin);
-            linearLayout.addView(imageView);
-            linearLayout.addView(title);
+            linearLayoutx.addView(imageView);
+            linearLayoutx.addView(title);
             linearLayout1.addView(cantin);
             imageView.setAdjustViewBounds(true);
 
             if (isOdd(i)){
-                linearLayout3.addView(linearLayout);
+                linearLayout3.addView(linearLayoutx);
                 linearLayout3.addView(linearLayout1);
             }
             else {
-                linearLayout4.addView(linearLayout);
+                linearLayout4.addView(linearLayoutx);
                 linearLayout4.addView(linearLayout1);
             }
 
@@ -186,6 +188,7 @@ public class HomeFragment extends Fragment {
             });
 
         }
+
 
 
         StorageReference listRef = storage.getReference();
@@ -241,8 +244,22 @@ public class HomeFragment extends Fragment {
 
 
 
-
-
+        linearLayoutx.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RestaurantActivity.class);
+                intent.putExtra("restName", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                intent.putExtra("type", xicandian1.getText());
+                startActivity(intent);
+            }
+        });
 
 
         xicandian.setOnClickListener(new View.OnClickListener() {
@@ -289,7 +306,7 @@ public class HomeFragment extends Fragment {
     }
 
     public boolean isOdd(int a){
-        if((a&1) != 1){   //是偶数
+        if((a&1) != 1){
             return true;
         }
         return false;

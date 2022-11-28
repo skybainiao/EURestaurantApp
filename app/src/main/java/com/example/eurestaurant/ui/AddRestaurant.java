@@ -140,7 +140,8 @@ public class AddRestaurant extends AppCompatActivity {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                Toast.makeText(getApplicationContext(), "Upload successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "上传成功", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -151,7 +152,7 @@ public class AddRestaurant extends AppCompatActivity {
                         });
                     }
                     else {
-                        Toast.makeText(getApplicationContext(), "Select an image", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "请选择一张图片", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -162,12 +163,18 @@ public class AddRestaurant extends AppCompatActivity {
 
 
     public void uploadInfo(){
-        Restaurant restaurant = new Restaurant(username,restaurantName.getText().toString(),addressDetail.getText().toString(),
-                infoTitle.getText().toString(),content.getText().toString(),restaurantType.getText().toString(),
-                cityName.getText().toString(),countryName.getText().toString(),"",0,0,0,0,0,null,0);
+        if (!restaurantName.getText().toString().equals("")&&!infoTitle.getText().toString().equals("")){
+            Restaurant restaurant = new Restaurant(username,restaurantName.getText().toString(),addressDetail.getText().toString(),
+                    infoTitle.getText().toString(),content.getText().toString(),restaurantType.getText().toString(),
+                    cityName.getText().toString(),countryName.getText().toString(),"",0,0,0,0,0,null,0);
 
 
-        databaseReference.child("Restaurant").child(restaurant.getRestaurantName()).setValue(restaurant);
+            databaseReference.child("Restaurant").child(restaurant.getRestaurantName()).setValue(restaurant);
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "文本不能为空", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
