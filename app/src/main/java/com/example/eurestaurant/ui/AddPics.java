@@ -45,7 +45,7 @@ public class AddPics extends AppCompatActivity {
         storageRef = storage.getReference();
         imageView=findViewById(R.id.imageView39);
         button1=findViewById(R.id.button66);
-        button2=findViewById(R.id.button67);
+        button2= findViewById(R.id.button67);
         editText=findViewById(R.id.editTextTextPersonName11);
 
 

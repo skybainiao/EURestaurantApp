@@ -139,7 +139,7 @@ public class HomeFragment extends Fragment {
 
 
         for (int i = 0; i < num; i++) {
-            linearLayoutx = new LinearLayout(getContext());
+            LinearLayout linearLayoutx = new LinearLayout(getContext());
             linearLayoutx.setOrientation(LinearLayout.VERTICAL);
             ImageView imageView = new ImageView(getContext());
             imageViews.add(imageView);
@@ -162,6 +162,24 @@ public class HomeFragment extends Fragment {
                 linearLayout4.addView(linearLayoutx);
                 linearLayout4.addView(linearLayout1);
             }
+
+            linearLayoutx.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getActivity(), RestaurantActivity.class);
+                    intent.putExtra("restName", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText());
+                    startActivity(intent);
+                }
+            });
+
 
 
 
@@ -244,22 +262,6 @@ public class HomeFragment extends Fragment {
 
 
 
-        linearLayoutx.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RestaurantActivity.class);
-                intent.putExtra("restName", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                intent.putExtra("type", xicandian1.getText());
-                startActivity(intent);
-            }
-        });
 
 
         xicandian.setOnClickListener(new View.OnClickListener() {
