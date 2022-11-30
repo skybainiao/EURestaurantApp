@@ -93,8 +93,6 @@ public class AddRestaurant extends AppCompatActivity {
         uploadImg5=findViewById(R.id.imageView18);
         uploadImg6=findViewById(R.id.imageView17);
         uploadImg7=findViewById(R.id.imageView10);
-        uploadImg8=findViewById(R.id.imageView9);
-        uploadImg9=findViewById(R.id.imageView8);
         imageViews.add(uploadImg);
         imageViews.add(uploadImg1);
         imageViews.add(uploadImg2);

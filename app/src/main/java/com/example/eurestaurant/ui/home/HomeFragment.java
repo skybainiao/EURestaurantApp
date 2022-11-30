@@ -133,7 +133,7 @@ public class HomeFragment extends Fragment {
         linearLayout3=root.findViewById(R.id.linearLayout3);
         linearLayout4=root.findViewById(R.id.linearLayout4);
 
-        final long ONE_MEGABYTE = 1024 * 1024 * 5;
+        final long ONE_MEGABYTE = 1024 * 1024 * 10;
 
 
 
@@ -171,7 +171,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
-                    intent.putExtra("type", xicandian1.getText());
+                    intent.putExtra("type", xicandian1.getText ());
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
