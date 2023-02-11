@@ -66,7 +66,7 @@ public class AddPics extends AppCompatActivity {
             public void onClick(View v) {
                 if(filePath != null) {
                     System.out.println("pppppppppppppp"+getEntryName(filePath.getPath()));
-                    StorageReference childRef = storageRef.child(editText.getText().toString()+"/"+getEntryName(filePath.getPath()));
+                    StorageReference childRef = storageRef.child(editText.getText().toString()+"/"+getEntryName(filePath.getPath()+","+editText.getText().toString()));
 
                     UploadTask uploadTask = childRef.putFile(filePath);
 

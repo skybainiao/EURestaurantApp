@@ -72,6 +72,7 @@ public class HomeFragment extends Fragment {
     private Map<String,TextView> map = new HashMap<>();
     private int a=0;
     private ArrayList<StorageReference> storageReferences;
+    private ArrayList<String> picNames;
 
     private String username;
     private LinearLayout xicandian;
@@ -111,11 +112,13 @@ public class HomeFragment extends Fragment {
         restName=new ArrayList<>();
         imageViews=new ArrayList<>();
         referenceName=new ArrayList<>();
+        picNames = new ArrayList<>();
         storage = FirebaseStorage.getInstance();
         ref = storage.getReference();
         //StorageReference ref = storageReference.child("mmexport1663173155480.jpg");
         firebaseDatabase=FirebaseDatabase.getInstance("https://eufunapp-default-rtdb.europe-west1.firebasedatabase.app/");
         databaseReference=firebaseDatabase.getReference();
+        getNum();
 
         Intent getIntent = getActivity().getIntent();
         username = getIntent.getStringExtra("username");
@@ -136,6 +139,7 @@ public class HomeFragment extends Fragment {
         final long ONE_MEGABYTE = 1024 * 1024 * 10;
 
 
+        StorageReference listRef = storage.getReference();
 
 
         for (int i = 0; i < num; i++) {
@@ -186,15 +190,38 @@ public class HomeFragment extends Fragment {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot pair : snapshot.child("Restaurant").getChildren()){
+                    for(DataSnapshot pair : snapshot.child("Post").getChildren()){
                         arrayList1.add(pair.child("title").getValue().toString());
                         restName.add(pair.child("restaurantName").getValue().toString());
+                        picNames.add(pair.child("picture").getValue().toString());
                     }
                     System.out.println(arrayList1.toString());
                     for (int i = 0; i < textViews.size(); i++) {
                         textViews.get(i).setText(arrayList1.get(i));
                         restNameText.get(i).setText(restName.get(i));
-                        imageViews.get(i).setTag(restName.get(i));
+                        imageViews.get(i).setTag(picNames.get(i));
+                        System.out.println(imageViews.get(i).getTag()+"///////////////////////////////////");
+
+                        StorageReference islandRef = listRef.child(restName.get(i)+"/"+imageViews.get(i).getTag());
+
+                        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                            @Override
+                            public void onSuccess(byte[] bytes) {
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                                for (int j = 0; j < imageViews.size(); j++) {
+                                    if (islandRef.getPath().contains(imageViews.get(j).getTag().toString())){
+                                        imageViews.get(j).setImageBitmap(bitmap);
+                                        break;
+                                    }
+                                }
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception exception) {
+                                // Handle any errors
+                            }
+                        });
                     }
 
                 }
@@ -209,57 +236,53 @@ public class HomeFragment extends Fragment {
 
 
 
-        StorageReference listRef = storage.getReference();
 
-        System.out.println("wwwwwwwwwwwwwwwwwwwww");
-        listRef.listAll()
-                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                    @Override
-                    public void onSuccess(ListResult listResult) {
-                        for (StorageReference prefix : listResult.getPrefixes()) {
-                            System.out.println("text1////"+prefix.getPath());
-                            for (int i = 0; i < imageViews.size(); i++) {
-                                if (prefix.getPath().equals("/"+imageViews.get(i).getTag())){
-                                    System.out.println("text3//////"+prefix.getPath());
-                                    prefix.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                                        @Override
-                                        public void onSuccess(ListResult listResult) {
-                                            for (StorageReference item : listResult.getItems()) {
-                                                item.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                                                    @Override
-                                                    public void onSuccess(byte[] bytes) {
-                                                        for (int j = 0; j < imageViews.size(); j++) {
-                                                            if (item.getPath().contains(imageViews.get(j).getTag().toString())){
-                                                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                                                                imageViews.get(j).setImageBitmap(bitmap);
-                                                            }
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        }
-
-                        for (StorageReference item : listResult.getItems()) {
-                            if (item.getPath().contains("大中国")){
-                                System.out.println("text2////"+item.getPath());
-                            }
-                            storageReferences.add(item);
-                            referenceName.add(item.getPath());
-                            //System.out.println(referenceName);
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        System.out.println(e);
-                    }
-                });
-
+        //System.out.println("wwwwwwwwwwwwwwwwwwwww");
+        //listRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+        //            @Override
+        //            public void onSuccess(ListResult listResult) {
+        //                for (StorageReference prefix : listResult.getPrefixes()) {
+        //                    for (int i = 0; i < imageViews.size(); i++) {
+        //                        if (prefix.getPath().equals("/"+imageViews.get(i).getTag())){
+        //                            System.out.println("text3//////"+prefix.getPath());
+        //                            prefix.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+        //                                @Override
+        //                                public void onSuccess(ListResult listResult) {
+        //                                    for (StorageReference item : listResult.getItems()) {
+        //                                        item.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+        //                                            @Override
+        //                                            public void onSuccess(byte[] bytes) {
+        //                                                for (int j = 0; j < imageViews.size(); j++) {
+        //                                                    if (item.getPath().contains(imageViews.get(j).getTag().toString())){
+        //                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+        //                                                        imageViews.get(j).setImageBitmap(bitmap);
+        //                                                    }
+        //                                                }
+        //                                            }
+        //                                        });
+        //                                    }
+        //                                }
+        //                            });
+        //                        }
+        //                    }
+        //                }
+//
+        //                for (StorageReference item : listResult.getItems()) {
+        //                    if (item.getPath().contains("大中国")){
+        //                        System.out.println("text2////"+item.getPath());
+        //                    }
+        //                    storageReferences.add(item);
+        //                    referenceName.add(item.getPath());
+        //                    //System.out.println(referenceName);
+        //                }
+        //            }
+        //        })
+        //        .addOnFailureListener(new OnFailureListener() {
+        //            @Override
+        //            public void onFailure(@NonNull Exception e) {
+        //                System.out.println(e);
+        //            }
+        //        });
 
 
 
@@ -305,6 +328,20 @@ public class HomeFragment extends Fragment {
 
 
         return root;
+    }
+
+    public void getNum(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                num=(int) snapshot.child("Post").getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public boolean isOdd(int a){

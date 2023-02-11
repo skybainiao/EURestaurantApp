@@ -65,7 +65,7 @@ public class LoginActivity1 extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                num=(int) snapshot.child("Restaurant").getChildrenCount();
+                num=(int) snapshot.child("Post").getChildrenCount();
             }
 
             @Override

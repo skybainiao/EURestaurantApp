@@ -16,12 +16,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.eurestaurant.Model.Post;
+
 import com.example.eurestaurant.Model.Restaurant;
 import com.example.eurestaurant.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -59,6 +64,8 @@ public class AddRestaurant extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private FirebaseStorage storage;
     private StorageReference storageRef;
+    private int num;
+    private String picFor1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +76,7 @@ public class AddRestaurant extends AppCompatActivity {
         uris=new ArrayList<>();
         Intent getIntent = getIntent();
         username = getIntent.getStringExtra("username");
+
         System.out.println(username);
         System.out.println("///////////////////////"+username);
 
@@ -76,6 +84,8 @@ public class AddRestaurant extends AppCompatActivity {
         databaseReference=firebaseDatabase.getReference();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
+
+        getNum();
 
         imageView=findViewById(R.id.imageView37);
         restaurantName=findViewById(R.id.editTextTextPersonName4);
@@ -88,21 +98,13 @@ public class AddRestaurant extends AppCompatActivity {
         uploadImg=findViewById(R.id.imageView42);
         uploadImg1=findViewById(R.id.imageView28);
         uploadImg2=findViewById(R.id.imageView23);
-        uploadImg3=findViewById(R.id.imageView22);
-        uploadImg4=findViewById(R.id.imageView21);
-        uploadImg5=findViewById(R.id.imageView18);
         uploadImg6=findViewById(R.id.imageView17);
         uploadImg7=findViewById(R.id.imageView10);
         imageViews.add(uploadImg);
         imageViews.add(uploadImg1);
         imageViews.add(uploadImg2);
-        imageViews.add(uploadImg3);
-        imageViews.add(uploadImg4);
-        imageViews.add(uploadImg5);
         imageViews.add(uploadImg6);
         imageViews.add(uploadImg7);
-        imageViews.add(uploadImg8);
-        imageViews.add(uploadImg9);
         //chooseImg=findViewById(R.id.button62);
         upload=findViewById(R.id.button63);
 
@@ -123,16 +125,17 @@ public class AddRestaurant extends AppCompatActivity {
 
 
         upload.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                uploadInfo();
+                getNum();
+                num++;
                 for (int i = 0; i < uris.size(); i++) {
                     if (uris.get(i)!=null){
                         System.out.println("pppppppppppppp"+getEntryName(uris.get(i).getPath()));
-                        StorageReference childRef = storageRef.child(restaurantName.getText().toString()+"/"+getEntryName(uris.get(i).getPath()));
-
+                        StorageReference childRef = storageRef.child(restaurantName.getText().toString()+"/"+getEntryName(uris.get(i).getPath()+","+restaurantName.getText().toString()+","+num));
+                        picFor1=getEntryName(uris.get(i).getPath()+","+restaurantName.getText().toString()+","+num);
                         UploadTask uploadTask = childRef.putFile(uris.get(i));
+                        uploadInfo();
 
                         uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -158,16 +161,32 @@ public class AddRestaurant extends AppCompatActivity {
 
     }
 
+    public void getNum(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                num=(int) snapshot.child("Post").getChildrenCount();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 
     public void uploadInfo(){
         if (!restaurantName.getText().toString().equals("")&&!infoTitle.getText().toString().equals("")){
-            Restaurant restaurant = new Restaurant(username,restaurantName.getText().toString(),addressDetail.getText().toString(),
+            Post post = new Post(num,username,restaurantName.getText().toString(),addressDetail.getText().toString(),
                     infoTitle.getText().toString(),content.getText().toString(),restaurantType.getText().toString(),
-                    cityName.getText().toString(),countryName.getText().toString(),"",0,0,0,0,0,null,0);
+                    cityName.getText().toString(),countryName.getText().toString(),picFor1,0,0,0,0,0,null,0);
 
+            Restaurant restaurant = new Restaurant(restaurantName.getText().toString(),"",username,addressDetail.getText().toString(),restaurantType.getText().toString(),cityName.getText().toString(),countryName.getText().toString());
 
-            databaseReference.child("Restaurant").child(restaurant.getRestaurantName()).setValue(restaurant);
+            databaseReference.child("Post").child(post.getNumber()+","+post.getRestaurantName()+","+post.getTitle()).setValue(post);
+            databaseReference.child("Restaurant").child(restaurant.getRestName()).setValue(restaurant);
         }
         else {
             Toast.makeText(getApplicationContext(), "文本不能为空", Toast.LENGTH_SHORT).show();
