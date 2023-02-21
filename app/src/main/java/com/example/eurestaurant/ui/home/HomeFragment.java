@@ -31,6 +31,7 @@ import com.example.eurestaurant.databinding.FragmentHomeBinding;
 import com.example.eurestaurant.ui.AddRestaurant;
 import com.example.eurestaurant.ui.ChooseUploadType;
 import com.example.eurestaurant.ui.CountryActivity;
+import com.example.eurestaurant.ui.LoginActivity1;
 import com.example.eurestaurant.ui.RestaurantActivity;
 import com.example.eurestaurant.ui.TypesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -73,6 +74,8 @@ public class HomeFragment extends Fragment {
     private int a=0;
     private ArrayList<StorageReference> storageReferences;
     private ArrayList<String> picNames;
+
+    private String postNum;
 
     private String username;
     private LinearLayout xicandian;
@@ -167,6 +170,8 @@ public class HomeFragment extends Fragment {
                 linearLayout4.addView(linearLayout1);
             }
 
+
+
             linearLayoutx.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -175,7 +180,7 @@ public class HomeFragment extends Fragment {
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
-                    intent.putExtra("type", xicandian1.getText ());
+                    intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
                     intent.putExtra("type", xicandian1.getText());
@@ -185,6 +190,15 @@ public class HomeFragment extends Fragment {
             });
 
 
+            String str = imageViews.get(i).getTag().toString();
+            postNum = str.substring(str.length()-1);
+
+            imageViews.get(i).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
 
 
             databaseReference.addValueEventListener(new ValueEventListener() {
@@ -237,55 +251,6 @@ public class HomeFragment extends Fragment {
 
 
 
-        //System.out.println("wwwwwwwwwwwwwwwwwwwww");
-        //listRef.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-        //            @Override
-        //            public void onSuccess(ListResult listResult) {
-        //                for (StorageReference prefix : listResult.getPrefixes()) {
-        //                    for (int i = 0; i < imageViews.size(); i++) {
-        //                        if (prefix.getPath().equals("/"+imageViews.get(i).getTag())){
-        //                            System.out.println("text3//////"+prefix.getPath());
-        //                            prefix.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
-        //                                @Override
-        //                                public void onSuccess(ListResult listResult) {
-        //                                    for (StorageReference item : listResult.getItems()) {
-        //                                        item.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-        //                                            @Override
-        //                                            public void onSuccess(byte[] bytes) {
-        //                                                for (int j = 0; j < imageViews.size(); j++) {
-        //                                                    if (item.getPath().contains(imageViews.get(j).getTag().toString())){
-        //                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-        //                                                        imageViews.get(j).setImageBitmap(bitmap);
-        //                                                    }
-        //                                                }
-        //                                            }
-        //                                        });
-        //                                    }
-        //                                }
-        //                            });
-        //                        }
-        //                    }
-        //                }
-//
-        //                for (StorageReference item : listResult.getItems()) {
-        //                    if (item.getPath().contains("大中国")){
-        //                        System.out.println("text2////"+item.getPath());
-        //                    }
-        //                    storageReferences.add(item);
-        //                    referenceName.add(item.getPath());
-        //                    //System.out.println(referenceName);
-        //                }
-        //            }
-        //        })
-        //        .addOnFailureListener(new OnFailureListener() {
-        //            @Override
-        //            public void onFailure(@NonNull Exception e) {
-        //                System.out.println(e);
-        //            }
-        //        });
-
-
-
 
         xicandian.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -327,8 +292,27 @@ public class HomeFragment extends Fragment {
 
 
 
+
+
         return root;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void getNum(){
         databaseReference.addValueEventListener(new ValueEventListener() {

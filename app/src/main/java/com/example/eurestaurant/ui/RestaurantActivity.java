@@ -1,6 +1,8 @@
 package com.example.eurestaurant.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ public class RestaurantActivity extends AppCompatActivity {
     private TextView title;
     private TextView content;
     private TextView location;
+    private String postNum;
     private RatingBar ratingBar1;
     private RatingBar ratingBar2;
     private RatingBar ratingBar3;
@@ -38,6 +41,10 @@ public class RestaurantActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
+
+        Intent getIntent = getIntent();
+        postNum = getIntent.getStringExtra("postNum");
+        System.out.println(postNum);
 
         back=findViewById(R.id.imageView12);
         restName=findViewById(R.id.textView22);
