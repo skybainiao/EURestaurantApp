@@ -97,6 +97,7 @@ public class HomeFragment extends Fragment {
     private LinearLayout linearLayout3;
     private LinearLayout linearLayout4;
     private int num;
+    private int anInt;
     private LinearLayout linearLayoutx;
 
 
@@ -146,6 +147,7 @@ public class HomeFragment extends Fragment {
 
 
         for (int i = 0; i < num; i++) {
+            anInt=i;
             LinearLayout linearLayoutx = new LinearLayout(getContext());
             linearLayoutx.setOrientation(LinearLayout.VERTICAL);
             ImageView imageView = new ImageView(getContext());
@@ -190,13 +192,23 @@ public class HomeFragment extends Fragment {
             });
 
 
-            String str = imageViews.get(i).getTag().toString();
-            postNum = str.substring(str.length()-1);
-
+            int finalI = i+1;
             imageViews.get(i).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Intent intent = new Intent(getActivity(), RestaurantActivity.class);
+                            intent.putExtra("postNum",finalI);
+                            startActivity(intent);
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             });
 
